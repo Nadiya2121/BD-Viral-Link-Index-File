@@ -93,9 +93,7 @@
             gap: 8px;
             width: 100%;
         }
-        .cat-chip-all:active, .cat-chip:active {
-            transform: scale(0.97);
-        }
+        .cat-chip-all:active, .cat-chip:active { transform: scale(0.97); }
         .cat-chip-all.active {
             background: linear-gradient(135deg, #ef4444, #dc2626);
             color: #fff;
@@ -109,9 +107,7 @@
             width: 100%;
         }
         @media (min-width: 480px) {
-            .category-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .category-grid { grid-template-columns: repeat(3, 1fr); }
         }
         .cat-chip {
             background: rgba(17, 24, 39, 0.7);
@@ -298,7 +294,7 @@
         <button onclick="goHome()" class="home-btn"><i class="fa-solid fa-house"></i> Home Page</button>
     </header>
     
-    <!-- ড্রপডাউন প্রোফাইল মেনু -->
+    <!-- ড্রপডাউন মেনু -->
     <div id="dropdownMenu" class="dropdown-menu">
         <div style="padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; gap: 12px;">
             <div style="width: 38px; height: 38px; background: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px; flex-shrink: 0;">
@@ -319,7 +315,7 @@
         <a onclick="openWatchlistModal()"><i class="fa-solid fa-bookmark text-red-400"></i> My Watchlist</a>
         <a onclick="openAdCampModal()"><i class="fa-solid fa-bullhorn text-yellow-400"></i> Promote Channel/Web</a>
         <div style="height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0;"></div>
-        <a onclick="tg.showAlert(`How to Download:\n1. Click the Download button.\n2. Wait for ${AD_WAIT_TIME} seconds on the opened link.\n3. Return to the mini app and the video will be automatically sent to your bot inbox!`)"><i class="fa-solid fa-circle-question text-red-400"></i> How to Download</a>
+        <a onclick="tg.showAlert(`How to Download:\n1. Click Download button.\n2. Wait for ${AD_WAIT_TIME} seconds on the opened link.\n3. Return to the mini app and the video will be sent to your bot inbox!`)"><i class="fa-solid fa-circle-question text-red-400"></i> How to Download</a>
         <a id="ourChannelBtn" href="#"><i class="fa-solid fa-bullhorn text-green-400"></i> Our Channel</a>
         <a id="ourSupportBtn" href="#"><i class="fa-brands fa-telegram text-blue-400"></i> Support / Contact</a>
         <a id="adminMenuBtn" style="display: none; color: #ef4444;"><i class="fa-solid fa-screwdriver-wrench"></i> Admin Panel</a>
@@ -330,7 +326,7 @@
         <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search Movies, Series, Videos...">
     </div>
 
-    <!-- 🏷️ নন-স্ক্রোল ক্যাটাগরি প্যানেল -->
+    <!-- ক্যাটাগরি প্যানেল -->
     <div class="category-panel" id="categoryPanel">
         <div class="cat-chip-all active" id="catAllBtn" onclick="selectCategory('all', this)">
             <i class="fa-solid fa-fire text-yellow-400"></i> All Categories (সকল ভিডিও)
@@ -344,7 +340,7 @@
         <div class="trending-container" id="trendingGrid"></div>
     </div>
 
-    <!-- রিসেন্ট মুভিজ সেকশন -->
+    <!-- মুভি লিস্ট সেকশন -->
     <div class="section-title" id="recentTitle"><i class="fa-solid fa-film text-blue-400"></i> Recently Added</div>
     <div class="grid" id="movieGrid"></div>
     
@@ -369,7 +365,7 @@
     <div class="floating-btn btn-tg" id="floatTgBtn"><i class="fa-brands fa-telegram"></i></div>
     <div class="floating-btn btn-req" onclick="openRequestsTrackerModal()"><i class="fa-solid fa-code-pull-request"></i></div>
 
-    <!-- 📢 ফিক্সড স্টিকি ব্যানার স্লট -->
+    <!-- ব্যানার স্লট -->
     <div id="slotStickyBottom" class="sticky-bottom-banner"></div>
 
     <!-- বটম নেভিগেশন -->
@@ -392,7 +388,7 @@
         </div>
     </div>
 
-    <!-- 🎬 ভিডিও ডিটেইলস পেজ -->
+    <!-- ভিডিও ডিটেইলস পেজ -->
     <div id="qualityModal" class="modal">
         <div class="modal-content">
             <div style="display: flex; align-items: center; padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; background: rgba(7, 9, 14, 0.98); z-index: 100; width: 100%;">
@@ -406,7 +402,7 @@
             </div>
 
             <div style="padding: 15px; text-align: left;">
-                <h1 id="detailMovieTitle" style="font-size: 20px; font-weight: 800; color: #fff; line-height: 1.3; margin-bottom: 15px;">Video Title</h1>
+                <h1 id="detailMovieTitle" style="font-size: 18px; font-weight: 800; color: #fff; line-height: 1.35; margin-bottom: 15px; word-break: break-word;">Video Title</h1>
                 
                 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; text-align: center;">
                     <div class="stat-box" onclick="toggleLikeAction()">
@@ -454,7 +450,7 @@
         </div>
     </div>
 
-    <!-- 🎡 ডাউনলোড কোয়ালিটি পপ-আপ -->
+    <!-- ডাউনলোড কোয়ালিটি পপ-আপ -->
     <div id="downloadListModal" class="modal">
         <div class="modal-content" style="background: #111827; border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.1); width: 92%; max-width: 400px; text-align: center;">
             <div class="close-icon" onclick="document.getElementById('downloadListModal').style.display='none'"><i class="fa-solid fa-xmark"></i></div>
@@ -462,14 +458,14 @@
             
             <div style="background: rgba(15, 23, 42, 0.9); border-left: 4px solid #f59e0b; padding: 12px; border-radius: 8px; text-align: left; margin-bottom: 15px;">
                 <p style="color:#f59e0b; font-weight:bold; font-size: 13px; margin-bottom: 5px;"><i class="fa-solid fa-circle-info"></i> How to Download?</p>
-                <p style="color:#cbd5e1; font-size: 12px; line-height: 1.5;">1. Select any quality or part below.<br>2. Wait for <b id="guideWaitTime">15 seconds</b> on the opened link.<br>3. Return to the app to automatically receive the file!</p>
+                <p style="color:#cbd5e1; font-size: 12px; line-height: 1.5;">1. Select any quality or part below.<br>2. Wait for <b id="guideWaitTime">10 seconds</b> on the opened link.<br>3. Return to the app to automatically receive the file!</p>
             </div>
 
             <div id="popupQualityList" style="display: flex; flex-direction: column; gap: 8px;"></div>
         </div>
     </div>
 
-    <!-- 🛑 অ্যান্টি-অ্যাডব্লকার শিল্ড -->
+    <!-- অ্যান্টি-অ্যাডব্লকার শিল্ড -->
     <div id="adblockModal" class="modal">
         <div class="modal-content" style="background: #111113; border: 2px solid #ef4444; padding: 30px 22px; border-radius: 24px; width: 92%; max-width: 400px; text-align: center;">
             <div style="font-size: 55px; color: #ef4444; margin-bottom: 12px;"><i class="fa-solid fa-shield-halved"></i></div>
@@ -505,7 +501,7 @@
         </div>
     </div>
 
-    <!-- 🔓 ডিরেক্ট লিংক আনলক মডাল -->
+    <!-- ডিরেক্ট লিংক আনলক মডাল -->
     <div id="directLinkModal" class="modal">
         <div class="modal-content" style="background: #111113; border: 1px solid #27272a; padding: 30px 24px; border-radius: 24px; width: 92%; max-width: 400px; text-align: center; position: relative;">
             <div class="close-icon" onclick="document.getElementById('directLinkModal').style.display='none'"><i class="fa-solid fa-xmark"></i></div>
@@ -668,11 +664,8 @@
         </div>
     </div>
 
-    <!-- 🌐 জাভাস্ক্রিপ্ট কন্ট্রোলার -->
+    <!-- 🌐 জাভাস্ক্রিপ্ট কোর ইঞ্জিন -->
     <script>
-        // -------------------------------------------------------------
-        // 🟢 আপনার Koyeb ব্যাকএন্ডের ডোমেইন লিঙ্ক নিচে বসান (শেষের স্লাশ ছাড়া)
-        // -------------------------------------------------------------
         const BACKEND_URL = "https://neutral-loretta-nahid003-050793ee.koyeb.app"; 
         
         let tg = window.Telegram.WebApp; 
@@ -680,7 +673,9 @@
 
         const INIT_DATA = tg.initData || "";
         let BOT_UNAME = "MovieZoneBot";
-        let AD_WAIT_TIME = 15; 
+        
+        // 🟢 ডিফল্ট ১০ সেকেন্ড করা হলো (ব্যাকএন্ডে যা থাকবে সেটাই পরে সেট হবে)
+        let AD_WAIT_TIME = 10; 
         let AD_INTERVAL = 4;
         let DIRECT_LINKS = [];
         let SOCIAL_LINKS = {};
@@ -689,7 +684,11 @@
         let isUserVip = false;
         let isAdminUser = false; 
         let userCoins = 0;
+        
+        // 🟢 স্পেশাল ক্যারেক্টার ও বড় টাইটেল সেফ স্টোরেজ
         let loadedMovies = {}; 
+        let currentActiveMovie = null;
+
         let currentPage = 1; 
         let searchQuery = "";
         let currentCategory = "all";
@@ -708,14 +707,26 @@
             detail_code: ""
         };
 
-        // পোস্টার ইউআরএল হেল্পার
+        // UI-তে লাইভ অ্যাড টাইম সিঙ্ক
+        function updateAdTimeUI(time) {
+            AD_WAIT_TIME = parseInt(time) || 10;
+            const guide = document.getElementById('guideWaitTime');
+            const notice = document.getElementById('adNoticeTime');
+            if (guide) guide.innerText = `${AD_WAIT_TIME} seconds`;
+            if (notice) notice.innerText = `${AD_WAIT_TIME} সেকেন্ডের একটি বিজ্ঞাপন দেখতে হবে।`;
+        }
+
+        function generateMovieKey(title) {
+            if (!title) return 'm_' + Math.random().toString(36).substring(7);
+            return 'key_' + encodeURIComponent(title.trim().toLowerCase()).replace(/[^a-zA-Z0-9]/g, '');
+        }
+
         function getPosterUrl(photoId) {
             if (!photoId) return 'https://via.placeholder.com/640x360?text=No+Image';
             if (photoId.startsWith('http://') || photoId.startsWith('https://')) return photoId;
             return `${BACKEND_URL}/api/image/${photoId}`;
         }
 
-        // 🛡️ অ্যান্টি-অ্যাডব্লকার ও AdGuard ডিটেকশন
         async function isAdBlockerActive() {
             if (isUserVip) return false;
             try {
@@ -795,7 +806,7 @@
                 doc.open();
                 doc.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style></head><body>${rawHtml}</body></html>`);
                 doc.close();
-            } catch(e) { console.error("Ad inject error:", e); }
+            } catch(e) {}
         }
 
         async function fetchBannerConfig() {
@@ -883,13 +894,14 @@
                 isUserVip = data.vip;
                 userCoins = data.coins || 0;
                 BOT_UNAME = data.bot_username || BOT_UNAME;
-                AD_WAIT_TIME = data.ad_wait_time || AD_WAIT_TIME;
                 AD_INTERVAL = data.ad_interval || AD_INTERVAL;
                 DIRECT_LINKS = data.direct_links || [];
                 SOCIAL_LINKS = data.social_links || {};
 
-                document.getElementById('guideWaitTime').innerText = `${AD_WAIT_TIME} seconds`;
-                document.getElementById('adNoticeTime').innerText = `${AD_WAIT_TIME} সেকেন্ডের একটি বিজ্ঞাপন দেখতে হবে।`;
+                // 🟢 ব্যাকএন্ড থেকে আসা টাইম অটো-সিঙ্ক
+                if (data.ad_wait_time) {
+                    updateAdTimeUI(data.ad_wait_time);
+                }
 
                 const vCost = data.vip_cost || 30;
                 const vDays = data.vip_days || 1;
@@ -1064,23 +1076,24 @@
                     html = '<p style="color: #cbd5e1; text-align:center; padding: 20px;">Your Watchlist is empty!</p>';
                 } else {
                     data.watchlist.forEach(m => {
-                        const safeTitle = m.title.trim();
-                        loadedMovies[safeTitle] = {
-                            _id: safeTitle,
+                        const originalTitle = m.title || "Untitled";
+                        const safeKey = generateMovieKey(originalTitle);
+                        loadedMovies[safeKey] = {
+                            _id: originalTitle,
                             photo_id: m.photo_id,
                             files: m.files,
                             clicks: m.clicks || 0
                         };
                         
                         html += `
-                        <div class="card" onclick="openQualityModal(this)" data-title="${encodeURIComponent(safeTitle)}">
+                        <div class="card" onclick="openQualityModalByKey('${safeKey}')">
                             <div class="post-content shimmer-placeholder">
                                 <img src="${getPosterUrl(m.photo_id)}" loading="lazy" onload="this.parentNode.classList.remove('shimmer-placeholder')" onerror="this.src='https://via.placeholder.com/640x360?text=No+Image'">
                                 <div class="ep-badge"><i class="fa-solid fa-bookmark text-yellow-400"></i> Saved</div>
                             </div>
                             <div class="card-footer">
                                 <div class="channel-logo">BD</div>
-                                <div class="title-text">${m.title}</div>
+                                <div class="title-text">${originalTitle}</div>
                             </div>
                         </div>`;
                     });
@@ -1090,7 +1103,8 @@
         }
 
         async function toggleWatchlist() {
-            const title = document.getElementById('detailMovieTitle').innerText.trim();
+            if (!currentActiveMovie) return;
+            const title = currentActiveMovie._id;
             let endpoint = isCurrentMovieBookmarked ? `${BACKEND_URL}/api/watchlist/remove` : `${BACKEND_URL}/api/watchlist/add`;
             try {
                 const res = await fetch(endpoint, {
@@ -1286,7 +1300,6 @@
         }
 
         function formatViews(n) { if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M'; if (n >= 1000) return (n / 1000).toFixed(1) + 'K'; return n; }
-        function makeSafeId(str) { return str.replace(/[^a-zA-Z0-9]/g, '_'); }
 
         function startAutoScroll() {
             if(autoScrollInterval) clearInterval(autoScrollInterval);
@@ -1306,21 +1319,22 @@
                 const grid = document.getElementById('trendingGrid');
                 if(data.length === 0) return document.getElementById('trendingWrapper').style.display = 'none';
                 grid.innerHTML = data.map(m => {
-                    const safeKey = m._id.trim();
+                    const originalTitle = m._id || "Untitled";
+                    const safeKey = generateMovieKey(originalTitle);
                     loadedMovies[safeKey] = m;
                     let totalParts = m.files.length;
                     let partText = totalParts === 1 ? 'Part' : 'Parts';
                     
-                    return `<div class="trending-card" onclick="openQualityModal(this)" data-title="${encodeURIComponent(safeKey)}">
+                    return `<div class="trending-card" onclick="openQualityModalByKey('${safeKey}')">
                         <div class="post-content shimmer-placeholder">
                             <div class="top-badge">🔥 TOP</div>
                             <img src="${getPosterUrl(m.photo_id)}" loading="lazy" onload="this.parentNode.classList.remove('shimmer-placeholder')" onerror="this.src='https://via.placeholder.com/640x360?text=No+Image'">
                             <div class="ep-badge"><i class="fa-solid fa-list"></i> ${totalParts} ${partText}</div>
-                            <div class="view-badge" id="trend-view-${makeSafeId(safeKey)}"><i class="fa-solid fa-eye"></i> ${formatViews(m.clicks)}</div>
+                            <div class="view-badge" id="trend-view-${safeKey}"><i class="fa-solid fa-eye"></i> ${formatViews(m.clicks || 0)}</div>
                         </div>
                         <div class="card-footer">
                             <div class="channel-logo">BD</div>
-                            <div class="title-text">${m._id}</div>
+                            <div class="title-text">${originalTitle}</div>
                         </div>
                     </div>`;
                 }).join('');
@@ -1365,20 +1379,21 @@
 
                 let htmlContent = "";
                 data.movies.forEach((m, index) => {
-                    const safeKey = m._id.trim();
+                    const originalTitle = m._id || "Untitled";
+                    const safeKey = generateMovieKey(originalTitle);
                     loadedMovies[safeKey] = m; 
                     let totalParts = m.files.length;
                     let partText = totalParts === 1 ? 'Part' : 'Parts';
                     
-                    let cardHtml = `<div class="card" onclick="openQualityModal(this)" data-title="${encodeURIComponent(safeKey)}">
+                    let cardHtml = `<div class="card" onclick="openQualityModalByKey('${safeKey}')">
                         <div class="post-content shimmer-placeholder">
                             <img src="${getPosterUrl(m.photo_id)}" loading="lazy" onload="this.parentNode.classList.remove('shimmer-placeholder')" onerror="this.src='https://via.placeholder.com/640x360?text=No+Image'">
                             <div class="ep-badge"><i class="fa-solid fa-list"></i> ${totalParts} ${partText}</div>
-                            <div class="view-badge" id="list-view-${makeSafeId(safeKey)}"><i class="fa-solid fa-eye"></i> ${formatViews(m.clicks)}</div>
+                            <div class="view-badge" id="list-view-${safeKey}"><i class="fa-solid fa-eye"></i> ${formatViews(m.clicks || 0)}</div>
                         </div>
                         <div class="card-footer">
                             <div class="channel-logo">BD</div>
-                            <div class="title-text">${m._id}</div>
+                            <div class="title-text">${originalTitle}</div>
                         </div>
                     </div>`;
                     htmlContent += cardHtml;
@@ -1520,12 +1535,12 @@
             } catch(e) {}
         }
 
-        async function openQualityModal(element) {
-            let title = "";
-            try { title = decodeURIComponent(element.getAttribute('data-title')).trim(); } catch(e) { title = element.getAttribute('data-title').trim(); }
-
-            const movie = loadedMovies[title];
+        async function openQualityModalByKey(safeKey) {
+            const movie = loadedMovies[safeKey];
             if (!movie) return;
+            currentActiveMovie = movie;
+
+            const title = movie._id;
             
             document.getElementById('detailLikeCount').innerText = "0";
             document.getElementById('detailDlCount').innerText = "0";
@@ -1565,17 +1580,15 @@
             }).catch(e => {});
             
             movie.clicks = (movie.clicks || 0) + 1;
-            let safeId = makeSafeId(title);
-            let tBadge = document.getElementById('trend-view-' + safeId);
-            let lBadge = document.getElementById('list-view-' + safeId);
+            let tBadge = document.getElementById('trend-view-' + safeKey);
+            let lBadge = document.getElementById('list-view-' + safeKey);
             if(tBadge) tBadge.innerHTML = '<i class="fa-solid fa-eye"></i> ' + formatViews(movie.clicks);
             if(lBadge) lBadge.innerHTML = '<i class="fa-solid fa-eye"></i> ' + formatViews(movie.clicks);
         }
 
         function openDownloadList() {
-            const title = document.getElementById('detailMovieTitle').innerText.trim();
-            const movie = loadedMovies[title];
-            if (!movie) return;
+            if (!currentActiveMovie) return;
+            const movie = currentActiveMovie;
             
             document.getElementById('popupQualityList').innerHTML = movie.files.map(f => {
                 let isFree = f.is_unlocked || isUserVip;
@@ -1590,7 +1603,8 @@
         }
 
         async function toggleLikeAction() {
-            const title = document.getElementById('detailMovieTitle').innerText.trim();
+            if (!currentActiveMovie) return;
+            const title = currentActiveMovie._id;
             const likeBtn = document.getElementById('detailMainLikeBtn');
             const likeText = document.getElementById('detailMainLikeText');
             const likeIcon = document.getElementById('detailLikeIcon');
@@ -1622,7 +1636,8 @@
         }
 
         function shareMovie() {
-            const title = document.getElementById('detailMovieTitle').innerText.trim();
+            if (!currentActiveMovie) return;
+            const title = currentActiveMovie._id;
             const safeTitleB64 = btoa(unescape(encodeURIComponent(title))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
             const shareText = encodeURIComponent(`Watch "${title}" on BD Viral Link!`);
             const shareUrl = `https://t.me/${BOT_UNAME}?start=movie_${safeTitleB64}`;
@@ -1647,7 +1662,8 @@
         }
 
         async function submitCommentAction() {
-            const title = document.getElementById('detailMovieTitle').innerText.trim();
+            if (!currentActiveMovie) return;
+            const title = currentActiveMovie._id;
             const commentVal = document.getElementById('detailCommentInputField').value.trim();
             const uname = tg.initDataUnsafe?.user?.first_name || 'Guest';
             if (!commentVal) return;
@@ -1692,8 +1708,9 @@
                 }
             }
 
-            const title = document.getElementById('detailMovieTitle').innerText.trim();
-            fetch(`${BACKEND_URL}/api/download`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ title: title }) }).then(() => fetchMovieStats(title)).catch(e => {});
+            if (currentActiveMovie) {
+                fetch(`${BACKEND_URL}/api/download`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ title: currentActiveMovie._id }) }).then(() => fetchMovieStats(currentActiveMovie._id)).catch(e => {});
+            }
 
             if(isUnlocked || isUserVip) { 
                 sendFileAndClose(fileId); 
