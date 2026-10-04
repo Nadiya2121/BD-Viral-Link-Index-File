@@ -1,0 +1,2021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BD Viral Link</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+        body { background: #07090e; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #fff; overflow-x: hidden; width: 100%; -webkit-overflow-scrolling: touch; padding-bottom: 120px; } 
+        
+        header { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; background: rgba(7, 9, 14, 0.95); backdrop-filter: blur(15px); z-index: 1000; width: 100%; gap: 8px; }
+        .logo { font-size: 22px; font-weight: 900; white-space: nowrap; letter-spacing: 1.5px; text-transform: uppercase; color: #fff; text-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+        .logo span { background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; padding: 2px 7px; border-radius: 6px; margin-left: 5px; font-size: 14px; box-shadow: 0 2px 10px rgba(239, 68, 68, 0.5); }
+        
+        .home-btn { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); padding: 4px 14px; border-radius: 20px; font-weight: bold; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: 0.2s; white-space: nowrap; }
+        .home-btn:active { transform: scale(0.95); background: rgba(239, 68, 68, 0.2); }
+
+        #startupSplash {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #111827 0%, #030712 100%);
+            z-index: 999999; display: flex; flex-direction: column; align-items: center;
+            justify-content: center; transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        .splash-logo-container {
+            position: relative; width: 120px; height: 120px; display: flex;
+            align-items: center; justify-content: center; margin-bottom: 25px;
+        }
+        .splash-halo {
+            position: absolute; width: 100%; height: 100%; border-radius: 28px;
+            background: linear-gradient(135deg, #ef4444, #ff0055);
+            filter: blur(25px); opacity: 0.6; animation: haloPulse 2s infinite alternate ease-in-out;
+        }
+        .splash-card {
+            position: relative; width: 100px; height: 100px; border-radius: 24px;
+            background: linear-gradient(145deg, #1f2937, #0b0f17);
+            border: 1px solid rgba(255, 255, 255, 0.15); display: flex;
+            align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .splash-icon {
+            font-size: 38px; font-weight: 900; background: linear-gradient(135deg, #f87171, #ef4444);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 8px rgba(239, 68, 68, 0.6));
+        }
+        .splash-progress-track {
+            width: 180px; height: 4px; background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px; overflow: hidden; margin-top: 25px; position: relative;
+        }
+        .splash-progress-bar {
+            width: 0%; height: 100%; background: linear-gradient(90deg, #ef4444, #f59e0b);
+            border-radius: 10px; transition: width 0.15s ease-out;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
+        }
+        @keyframes haloPulse {
+            0% { transform: scale(0.9); opacity: 0.4; }
+            100% { transform: scale(1.15); opacity: 0.8; }
+        }
+
+        .banner-slot-container {
+            width: 100%; display: flex; justify-content: center; align-items: center;
+            overflow: hidden; text-align: center; margin: 10px 0; background: transparent; min-height: 0;
+        }
+        .sticky-bottom-banner {
+            position: fixed; bottom: 62px; left: 0; width: 100%; z-index: 1900;
+            display: none; justify-content: center; align-items: center;
+            background: transparent; pointer-events: auto;
+        }
+
+        .category-panel {
+            padding: 0 15px 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+        .cat-chip-all {
+            background: rgba(30, 41, 59, 0.6);
+            color: #cbd5e1;
+            padding: 10px 15px;
+            border-radius: 14px;
+            font-size: 13.5px;
+            font-weight: 800;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+        }
+        .cat-chip-all:active, .cat-chip:active {
+            transform: scale(0.97);
+        }
+        .cat-chip-all.active {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: #fff;
+            border-color: #ef4444;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            width: 100%;
+        }
+        @media (min-width: 480px) {
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .cat-chip {
+            background: rgba(17, 24, 39, 0.7);
+            color: #94a3b8;
+            padding: 9px 12px;
+            border-radius: 12px;
+            font-size: 12.5px;
+            font-weight: 700;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .cat-chip.active {
+            background: #ef4444;
+            color: #fff;
+            border-color: #ef4444;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(7, 9, 14, 0.98); backdrop-filter: blur(15px); border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: space-around; align-items: center; padding: 10px 0; z-index: 2000; padding-bottom: calc(10px + env(safe-area-inset-bottom)); }
+        .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: #9ca3af; font-size: 11px; font-weight: bold; cursor: pointer; transition: 0.2s; width: 25%; gap: 4px; }
+        .nav-item i { font-size: 20px; transition: transform 0.2s; }
+        .nav-item.active { color: #ef4444; }
+        .nav-item.active i { transform: scale(1.15); }
+        .nav-item:active { transform: scale(0.9); }
+        
+        .dropdown-menu { display: none; position: fixed; bottom: 85px; right: 15px; background: rgba(17, 24, 39, 0.98); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; box-shadow: 0 -5px 25px rgba(0,0,0,0.7); z-index: 2100; width: 250px; animation: slideUp 0.2s ease-out forwards; }
+        @keyframes slideUp { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+        
+        .dropdown-menu a { display: flex; align-items: center; gap: 10px; padding: 12px 15px; color: white; text-decoration: none; font-weight: 600; font-size: 14px; cursor: pointer; transition: background 0.2s ease; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .dropdown-menu a:hover { background: rgba(255,255,255,0.05); }
+        .dropdown-menu a i { font-size: 16px; width: 20px; text-align: center; }
+        
+        .coin-tag { background: #3b82f6; color: white; font-weight: 900; padding: 2px 8px; border-radius: 10px; margin-left: 2px; font-size: 12px; }
+        .vip-tag { background: linear-gradient(45deg, #fbbf24, #f59e0b); color: #000; font-size: 12px; padding: 3px 8px; border-radius: 12px; font-weight: bold; display: none; margin-left:5px; }
+
+        .search-box { padding: 15px; }
+        .search-input { width: 100%; padding: 14px 20px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.1); outline: none; text-align: center; background: #111827; color: #fff; font-size: 16px; font-weight: 600; transition: border-color 0.2s; }
+        .search-input:focus { border-color: #ef4444; }
+
+        .section-title { padding: 5px 15px 12px; font-size: 18px; font-weight: 800; display: flex; align-items: center; gap: 8px; color: #f3f4f6; letter-spacing: 0.5px; }
+        
+        .trending-container { display: flex; overflow-x: auto; gap: 15px; padding: 0 15px 20px; scroll-behavior: smooth; scroll-snap-type: x mandatory; }
+        .trending-container::-webkit-scrollbar { display: none; }
+        .trending-card { min-width: 270px; max-width: 270px; background: transparent; overflow: hidden; cursor: pointer; flex-shrink: 0; position: relative; transition: transform 0.2s; scroll-snap-align: start; }
+        .trending-card:active { transform: scale(0.98); }
+
+        .ad-carousel-container { width: 100%; margin: 5px 0 15px 0; display: flex; flex-direction: column; align-items: center; }
+        .ad-carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; width: 100%; padding: 10px 0; scrollbar-width: none; }
+        .ad-carousel-track::-webkit-scrollbar { display: none; }
+        .ad-carousel-card { min-width: 250px; max-width: 250px; background: #ffffff; color: #1e293b; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; scroll-snap-align: start; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); flex-shrink: 0; text-decoration: none; transition: transform 0.2s; }
+        .ad-carousel-card:active { transform: scale(0.97); }
+        .ad-carousel-img-wrap { width: 100%; aspect-ratio: 16/10; background: #e2e8f0; overflow: hidden; }
+        .ad-carousel-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .ad-carousel-body { padding: 12px 15px 15px 15px; text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; background: #ffffff; }
+        .ad-carousel-title { font-size: 16px; font-weight: 800; color: #0f172a; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width: 100%; line-height: 1.2; }
+        .ad-carousel-subtitle { font-size: 12px; color: #64748b; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width: 100%; line-height: 1.4; margin-bottom: 8px; }
+        .ad-carousel-btn { background: linear-gradient(135deg, #ef4444, #dc2626); color: #ffffff; font-size: 13px; font-weight: 800; padding: 6px 20px; border-radius: 20px; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3); }
+        .ad-carousel-dots { display: flex; gap: 5px; margin-top: 5px; justify-content: center; }
+        .ad-carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: #475569; transition: background 0.2s, transform 0.2s; }
+        .ad-carousel-dot.active { background: #ef4444; transform: scale(1.25); }
+
+        .grid { padding: 0 15px 20px; display: flex; flex-direction: column; gap: 18px; }
+        .card { background: transparent; overflow: hidden; cursor: pointer; transition: transform 0.2s; border-radius: 0; }
+        .card:active { transform: scale(0.98); }
+        
+        .shimmer-placeholder { background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%); background-size: 200% 100%; animation: loading-shimmer 1.5s infinite; }
+        @keyframes loading-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+        .post-content { position: relative; padding: 2px; border-radius: 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); }
+        .post-content img { width: 100%; aspect-ratio: 16/9; height: auto; object-fit: cover; display: block; border-radius: 12px; }
+        
+        .card-footer { padding: 10px 4px 0; display: flex; align-items: flex-start; gap: 12px; text-align: left; }
+        .channel-logo { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #ef4444, #991b1b); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; flex-shrink: 0; box-shadow: 0 2px 10px rgba(239, 68, 68, 0.4); }
+        .title-text { color: #f3f4f6; font-size: 15px; font-weight: 700; line-height: 1.4; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; margin-top: 2px; }
+
+        .top-badge, .ep-badge, .view-badge { position: absolute; font-weight: 800; padding: 3px 8px; border-radius: 6px; font-size: 10.5px; z-index: 10; color: white;}
+        .top-badge { top: 8px; left: 8px; background: #ef4444; }
+        .view-badge { bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+        .ep-badge { top: 8px; right: 8px; background: #10b981; }
+
+        .infinite-scroll-loader { display: none; justify-content: center; align-items: center; padding: 15px 0 30px 0; width: 100%; }
+
+        .community-section { margin: 10px 15px 30px; padding: 15px; background: rgba(17, 24, 39, 0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; backdrop-filter: blur(10px); }
+        .social-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .social-btn { display: flex; align-items: center; gap: 8px; padding: 10px 15px; border-radius: 12px; font-weight: bold; font-size: 13px; text-decoration: none; transition: 0.2s; flex-grow: 1; justify-content: center; min-width: 140px; }
+        .social-btn:active { transform: scale(0.95); }
+        .fb-btn { background: rgba(24, 119, 242, 0.1); color: #1877f2; border: 1px solid rgba(24, 119, 242, 0.3); }
+        .yt-btn { background: rgba(255, 0, 0, 0.1); color: #ff0000; border: 1px solid rgba(255, 0, 0, 0.3); }
+        .tg-btn { background: rgba(36, 161, 222, 0.1); color: #24A1DE; border: 1px solid rgba(36, 161, 222, 0.3); }
+
+        .developer-credit { margin: 10px 15px 130px; padding: 22px 15px; background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95)); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 16px; text-align: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); backdrop-filter: blur(10px); position: relative; overflow: hidden; }
+        .developer-credit::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); animation: shine 3s infinite; }
+        @keyframes shine { 100% { left: 200%; } }
+        .dev-title { font-size: 12px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        .dev-name { font-size: 22px; font-weight: 900; background: linear-gradient(45deg, #f87171, #ef4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+        .dev-desc { font-size: 13.5px; color: #cbd5e1; margin-bottom: 18px; line-height: 1.5; }
+        .dev-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(45deg, #ef4444, #dc2626); color: white; padding: 12px 24px; border-radius: 30px; font-size: 15px; font-weight: bold; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); transition: 0.2s; position: relative; z-index: 10; }
+        .dev-btn:active { transform: scale(0.95); }
+
+        .floating-btn { position: fixed; right: 15px; color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; z-index: 500; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .btn-18 { bottom: 205px; background: linear-gradient(45deg, #ff0000, #990000); font-weight: bold; font-size: 16px; border: 2px solid white; }
+        .btn-tg { bottom: 145px; background: linear-gradient(45deg, #24A1DE, #1b7ba8); }
+        .btn-req { bottom: 85px; background: linear-gradient(45deg, #10b981, #059669); }
+
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 3000; backdrop-filter: blur(8px); }
+        .modal-content { background: #111827; width: 92%; max-width: 400px; padding: 25px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.1); max-height: 85vh; overflow-y: auto; position: relative; }
+        .close-icon { position: absolute; top: 12px; right: 15px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.08); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        
+        .rgb-border { position: relative; background: linear-gradient(45deg, #ef4444, #f59e0b, #10b981, #3b82f6, #ef4444); background-size: 200%; padding: 3px; border-radius: 14px; margin-bottom: 12px; cursor: pointer; width: 100%; }
+        .rgb-inner { display: flex; justify-content: space-between; align-items: center; background: #0b0f17; padding: 18px 16px; border-radius: 11px; color: white; font-weight: 800; font-size: 16px; }
+
+        .btn-submit { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; padding: 14px 20px; border-radius: 12px; font-weight: 800; width: 100%; font-size: 16px; cursor: pointer; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); }
+
+        .spinner-new { width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1); border-left-color: #ef4444; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        #qualityModal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #07090e; display: none; flex-direction: column; z-index: 3000; overflow-y: auto; }
+        #qualityModal .modal-content { background: #07090e; width: 100%; max-width: none; padding: 0; border: none; border-radius: 0; min-height: 100vh; max-height: none; overflow-y: visible; display: flex; flex-direction: column; }
+
+        .stat-box { display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(255,255,255,0.04); padding: 12px 5px; border-radius: 12px; cursor: pointer; border: 1px solid rgba(255,255,255,0.05); }
+        .stat-box:active { transform: scale(0.95); }
+
+        .act-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 25px; font-weight: 800; font-size: 15px; border: none; cursor: pointer; }
+        .act-btn:active { transform: scale(0.97); }
+        .btn-like { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+        .btn-like.liked { background: #ef4444; color: #fff; border: none; }
+        .btn-download { background: #ffffff; color: #07090e; font-weight: 900; }
+
+        .comment-item { display: flex; gap: 10px; margin-bottom: 12px; background: rgba(30,41,59,0.3); padding: 12px; border-radius: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: left; }
+        .comment-avatar { width: 34px; height: 34px; border-radius: 50%; background: #ef4444; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 13px; color: #fff; flex-shrink: 0; }
+        .comment-body { flex-grow: 1; display: flex; flex-direction: column; }
+        .comment-user-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+        .comment-username { font-weight: 700; font-size: 13.5px; color: #cbd5e1; }
+        .comment-text { font-size: 13px; color: #cbd5e1; line-height: 1.45; word-break: break-word; }
+        .comment-reply-btn { background: none; border: none; color: #f87171; font-size: 11px; font-weight: bold; cursor: pointer; padding: 4px 0; margin-top: 5px; display: inline-flex; align-items: center; gap: 4px; width: fit-content; }
+        
+        .comment-replies-list { margin-left: 24px; border-left: 1px solid #334155; padding-left: 12px; margin-top: 8px; display: flex; flex-direction: column; gap: 8px; }
+        .reply-item { display: flex; gap: 8px; background: rgba(15,23,42,0.4); padding: 8px 10px; border-radius: 8px; border: 1px solid rgba(239, 68, 68, 0.1); }
+        .admin-badge { background: linear-gradient(45deg, #10b981, #059669); color: white; font-size: 9px; padding: 1px 5px; border-radius: 4px; font-weight: bold; text-transform: uppercase; margin-left: 5px; }
+
+        .sticky-comment-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #07090e; border-top: 1px solid rgba(255,255,255,0.08); padding: 10px 15px calc(10px + env(safe-area-inset-bottom)); display: none; flex-direction: column; gap: 6px; z-index: 3100; }
+        .replying-indicator { display: none; align-items: center; justify-content: space-between; background: rgba(239, 68, 68, 0.1); padding: 5px 10px; border-radius: 6px; font-size: 11px; color: #f87171; font-weight: bold; }
+        .comment-input-row { display: flex; align-items: center; gap: 10px; }
+        .comment-input-field { flex-grow: 1; background: #111827; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; color: #fff; padding: 10px 15px; font-size: 13px; outline: none; }
+        .comment-send-btn { background: #ef4444; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; font-size: 14px; flex-shrink: 0; }
+
+        .cat-btn { background: rgba(255,255,255,0.05); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); padding: 8px 12px; border-radius: 10px; font-size: 13px; font-weight: bold; cursor: pointer; flex: 1; }
+        .cat-btn.active { background: #ef4444; color: #fff; border-color: #ef4444; }
+    </style>
+</head>
+<body onclick="closeMenu(event)">
+
+    <!-- 🎬 সিনেমাটিক স্প্ল্যাশ স্ক্রিন -->
+    <div id="startupSplash">
+        <div class="splash-logo-container">
+            <div class="splash-halo"></div>
+            <div class="splash-card">
+                <div class="splash-icon">BD</div>
+            </div>
+        </div>
+        <h1 style="font-size: 26px; font-weight: 900; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px;">
+            BD Viral <span style="color: #ef4444;">Link</span>
+        </h1>
+        <p style="font-size: 11px; font-weight: 700; color: #9ca3af; letter-spacing: 3px; text-transform: uppercase;">
+            Viral Videos In Your Pocket
+        </p>
+        <div class="splash-progress-track">
+            <div class="splash-progress-bar" id="splashProgressBar"></div>
+        </div>
+    </div>
+
+    <!-- হেডার -->
+    <header>
+        <div class="logo">BD Viral<span>Link</span></div>
+        <button onclick="goHome()" class="home-btn"><i class="fa-solid fa-house"></i> Home Page</button>
+    </header>
+    
+    <!-- ড্রপডাউন প্রোফাইল মেনু -->
+    <div id="dropdownMenu" class="dropdown-menu">
+        <div style="padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; gap: 12px;">
+            <div style="width: 38px; height: 38px; background: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px; flex-shrink: 0;">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div style="flex-grow: 1; text-align: left;">
+                <div style="font-size: 14px; font-weight: bold; color: white;" id="menuUname">Guest</div>
+                <div style="font-size: 11px; color: #94a3b8;" id="menuStatus">Free User</div>
+            </div>
+            <div style="text-align: right;">
+                <div id="coinDisplay" class="coin-tag"><i class="fa-solid fa-gem"></i> 0</div>
+                <div id="vipBadge" class="vip-tag">VIP</div>
+            </div>
+        </div>
+        
+        <a onclick="openReferModal()"><i class="fa-solid fa-share-nodes text-blue-400"></i> Refer & Earn</a>
+        <a onclick="openRequestsTrackerModal()"><i class="fa-solid fa-code-pull-request text-green-400"></i> Request Video & Track</a>
+        <a onclick="openWatchlistModal()"><i class="fa-solid fa-bookmark text-red-400"></i> My Watchlist</a>
+        <a onclick="openAdCampModal()"><i class="fa-solid fa-bullhorn text-yellow-400"></i> Promote Channel/Web</a>
+        <div style="height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0;"></div>
+        <a onclick="tg.showAlert(`How to Download:\n1. Click the Download button.\n2. Wait for ${AD_WAIT_TIME} seconds on the opened link.\n3. Return to the mini app and the video will be automatically sent to your bot inbox!`)"><i class="fa-solid fa-circle-question text-red-400"></i> How to Download</a>
+        <a id="ourChannelBtn" href="#"><i class="fa-solid fa-bullhorn text-green-400"></i> Our Channel</a>
+        <a id="ourSupportBtn" href="#"><i class="fa-brands fa-telegram text-blue-400"></i> Support / Contact</a>
+        <a id="adminMenuBtn" style="display: none; color: #ef4444;"><i class="fa-solid fa-screwdriver-wrench"></i> Admin Panel</a>
+    </div>
+
+    <!-- সার্চ বক্স -->
+    <div class="search-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search Movies, Series, Videos...">
+    </div>
+
+    <!-- 🏷️ নন-স্ক্রোল ক্যাটাগরি প্যানেল -->
+    <div class="category-panel" id="categoryPanel">
+        <div class="cat-chip-all active" id="catAllBtn" onclick="selectCategory('all', this)">
+            <i class="fa-solid fa-fire text-yellow-400"></i> All Categories (সকল ভিডিও)
+        </div>
+        <div class="category-grid" id="categoryBar"></div>
+    </div>
+
+    <!-- ট্রেন্ডিং সেকশন -->
+    <div id="trendingWrapper">
+        <div class="section-title"><i class="fa-solid fa-bolt text-red-500"></i> Trending Now</div>
+        <div class="trending-container" id="trendingGrid"></div>
+    </div>
+
+    <!-- রিসেন্ট মুভিজ সেকশন -->
+    <div class="section-title" id="recentTitle"><i class="fa-solid fa-film text-blue-400"></i> Recently Added</div>
+    <div class="grid" id="movieGrid"></div>
+    
+    <div class="infinite-scroll-loader" id="infiniteLoader">
+        <div class="spinner-new" style="width: 32px; height: 32px; border-width: 3px; margin: 0;"></div>
+    </div>
+    
+    <div id="communityBox"></div>
+
+    <!-- ডেভেলপার ক্রেডিট -->
+    <div class="developer-credit">
+        <div class="dev-title"><i class="fa-solid fa-laptop-code"></i> Developed & Deployed By</div>
+        <div class="dev-name">Bot Developer</div>
+        <div class="dev-desc">Do you want to create a high-quality premium movie bot for your channel or group? Contact us today.</div>
+        <button class="dev-btn" onclick="window.open('https://t.me/ProBotDeveloperBot', '_blank')">
+            <i class="fa-brands fa-telegram"></i> Contact Developer
+        </button>
+    </div>
+
+    <!-- ফ্লোটিং বাটনস -->
+    <div class="floating-btn btn-18" id="float18Btn">18+</div>
+    <div class="floating-btn btn-tg" id="floatTgBtn"><i class="fa-brands fa-telegram"></i></div>
+    <div class="floating-btn btn-req" onclick="openRequestsTrackerModal()"><i class="fa-solid fa-code-pull-request"></i></div>
+
+    <!-- 📢 ফিক্সড স্টিকি ব্যানার স্লট -->
+    <div id="slotStickyBottom" class="sticky-bottom-banner"></div>
+
+    <!-- বটম নেভিগেশন -->
+    <div class="bottom-nav">
+        <div class="nav-item active" id="navHome" onclick="goHome()">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </div>
+        <div class="nav-item" id="navSearch" onclick="focusSearch()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search</span>
+        </div>
+        <div class="nav-item" id="navVip" onclick="openVipModal()">
+            <i class="fa-solid fa-gem"></i>
+            <span>Premium</span>
+        </div>
+        <div class="nav-item" id="navProfile" onclick="toggleMenu(event)">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </div>
+    </div>
+
+    <!-- 🎬 ভিডিও ডিটেইলস পেজ -->
+    <div id="qualityModal" class="modal">
+        <div class="modal-content">
+            <div style="display: flex; align-items: center; padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; background: rgba(7, 9, 14, 0.98); z-index: 100; width: 100%;">
+                <button class="details-back-btn" onclick="history.back()" style="background: rgba(255,255,255,0.05); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; margin-right: 15px;"><i class="fa-solid fa-chevron-left"></i></button>
+                <span style="font-size: 17px; font-weight: 800; color: #fff; flex-grow: 1; text-align: left;">Video Details</span>
+            </div>
+
+            <div style="width: 100%; aspect-ratio: 16/9; background: #000; position: relative; overflow: hidden; flex-shrink: 0; display: block;">
+                <img id="detailPosterImg" src="" style="width: 100%; height: 100%; object-fit: cover; display: block; border: none; outline: none;">
+                <div style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.6); padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold; border: 1px solid rgba(255,255,255,0.2);">HD</div>
+            </div>
+
+            <div style="padding: 15px; text-align: left;">
+                <h1 id="detailMovieTitle" style="font-size: 20px; font-weight: 800; color: #fff; line-height: 1.3; margin-bottom: 15px;">Video Title</h1>
+                
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; text-align: center;">
+                    <div class="stat-box" onclick="toggleLikeAction()">
+                        <i class="fa-solid fa-heart" id="detailLikeIcon" style="color: #94a3b8; font-size: 22px;"></i>
+                        <span id="detailLikeCount" style="font-size: 14px; font-weight: 800; display: block; margin-top: 3px;">0</span>
+                        <span style="font-size: 10px; color: #64748b; font-weight: bold; text-transform: uppercase;">Like</span>
+                    </div>
+                    <div class="stat-box" onclick="openDownloadList()">
+                        <i class="fa-solid fa-square-arrow-down" style="color: #38bdf8; font-size: 22px;"></i>
+                        <span id="detailDlCount" style="font-size: 14px; font-weight: 800; display: block; margin-top: 3px;">0</span>
+                        <span style="font-size: 10px; color: #64748b; font-weight: bold; text-transform: uppercase;">Download</span>
+                    </div>
+                    <div class="stat-box" onclick="document.getElementById('commentsContainerSection').scrollIntoView({behavior: 'smooth'})">
+                        <i class="fa-solid fa-comment-dots" style="color: #a78bfa; font-size: 22px;"></i>
+                        <span id="detailCommentCount" style="font-size: 14px; font-weight: 800; display: block; margin-top: 3px;">0</span>
+                        <span style="font-size: 10px; color: #64748b; font-weight: bold; text-transform: uppercase;">Comments</span>
+                    </div>
+                    <div class="stat-box" onclick="shareMovie()">
+                        <i class="fa-solid fa-share-from-square" style="color: #fb923c; font-size: 22px;"></i>
+                        <span id="detailShareCount" style="font-size: 14px; font-weight: 800; display: block; margin-top: 3px;">0</span>
+                        <span style="font-size: 10px; color: #64748b; font-weight: bold; text-transform: uppercase;">Share</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-bottom: 15px;">
+                    <button id="detailMainLikeBtn" class="act-btn btn-like" onclick="toggleLikeAction()">
+                        <i class="fa-solid fa-heart"></i> <span id="detailMainLikeText">Like</span>
+                    </button>
+                    <button class="act-btn btn-download" onclick="openDownloadList()">
+                        <i class="fa-solid fa-circle-down"></i> Download
+                    </button>
+                </div>
+                
+                <div style="display: flex; justify-content: flex-start; margin-bottom: 20px;">
+                    <button id="bookmarkBtn" class="home-btn" style="border-radius: 12px; padding: 6px 14px; font-size: 13px;" onclick="toggleWatchlist()"></button>
+                </div>
+
+                <div id="slotDetailBanner" class="banner-slot-container" style="margin: 15px 0;"></div>
+
+                <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 15px; margin-bottom: 120px;" id="commentsContainerSection">
+                    <h3 style="font-size: 15px; font-weight: bold; margin-bottom: 12px; color: #cbd5e1;" id="commentsHeaderLabel">Comments (0)</h3>
+                    <div id="detailCommentsList" style="display: flex; flex-direction: column; gap: 10px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🎡 ডাউনলোড কোয়ালিটি পপ-আপ -->
+    <div id="downloadListModal" class="modal">
+        <div class="modal-content" style="background: #111827; border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.1); width: 92%; max-width: 400px; text-align: center;">
+            <div class="close-icon" onclick="document.getElementById('downloadListModal').style.display='none'"><i class="fa-solid fa-xmark"></i></div>
+            <h2 style="color: #ef4444; margin-bottom: 15px; font-size: 19px; font-weight: 900;"><i class="fa-solid fa-cloud-arrow-down"></i> Select Quality / Part</h2>
+            
+            <div style="background: rgba(15, 23, 42, 0.9); border-left: 4px solid #f59e0b; padding: 12px; border-radius: 8px; text-align: left; margin-bottom: 15px;">
+                <p style="color:#f59e0b; font-weight:bold; font-size: 13px; margin-bottom: 5px;"><i class="fa-solid fa-circle-info"></i> How to Download?</p>
+                <p style="color:#cbd5e1; font-size: 12px; line-height: 1.5;">1. Select any quality or part below.<br>2. Wait for <b id="guideWaitTime">15 seconds</b> on the opened link.<br>3. Return to the app to automatically receive the file!</p>
+            </div>
+
+            <div id="popupQualityList" style="display: flex; flex-direction: column; gap: 8px;"></div>
+        </div>
+    </div>
+
+    <!-- 🛑 অ্যান্টি-অ্যাডব্লকার শিল্ড -->
+    <div id="adblockModal" class="modal">
+        <div class="modal-content" style="background: #111113; border: 2px solid #ef4444; padding: 30px 22px; border-radius: 24px; width: 92%; max-width: 400px; text-align: center;">
+            <div style="font-size: 55px; color: #ef4444; margin-bottom: 12px;"><i class="fa-solid fa-shield-halved"></i></div>
+            
+            <h2 style="color: #ffffff; font-size: 21px; font-weight: 900; margin-bottom: 6px;">AdBlocker / AdGuard সনাক্ত হয়েছে!</h2>
+            <p style="color: #f87171; font-size: 13.5px; font-weight: 700; margin-bottom: 18px;">ভিডিও পেতে অ্যাডব্লকার বন্ধ করুন</p>
+            
+            <div style="text-align: left; font-size: 12.5px; color: #cbd5e1; line-height: 1.6; background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; border-radius: 10px; padding: 12px; margin-bottom: 20px;">
+                প্রিয় ইউজার, আমাদের সার্ভারের সমস্ত ভিডিও সবার জন্য <b>সম্পূর্ণ ফ্রি</b>। সার্ভার খরচ চালানোর জন্য বিজ্ঞাপনের প্রয়োজন।<br><br>
+                📌 <b>কী করতে হবে?</b><br>
+                ১. আপনার ফোনের <b>AdGuard App</b> অথবা <b>Private DNS</b> বন্ধ করুন।<br>
+                ২. তারপর নিচের <b>"বন্ধ করেছি"</b> বাটনে চাপ দিন।
+            </div>
+            
+            <button class="btn-submit" style="margin-bottom: 10px; background: linear-gradient(135deg, #10b981, #059669);" onclick="retryAfterAdblock()">
+                🔄 বন্ধ করেছি (চেক করুন)
+            </button>
+            <button class="home-btn" style="width: 100%; justify-content: center; padding: 10px; font-size: 13px; border-radius: 12px; border-color: #fbbf24; color: #fbbf24;" onclick="openVipModal(); document.getElementById('adblockModal').style.display='none';">
+                👑 VIP পাস নিন (বিজ্ঞাপন ছাড়া সরাসরি দেখুন)
+            </button>
+        </div>
+    </div>
+
+    <!-- স্টিকি কমেন্ট বার -->
+    <div class="sticky-comment-bar" id="stickyCommentBar">
+        <div class="replying-indicator" id="replyingIndicator">
+            <span id="replyingText">Replying to User</span>
+            <i class="fa-solid fa-xmark" style="cursor:pointer; padding: 2px;" onclick="cancelReply()"></i>
+        </div>
+        <div class="comment-input-row">
+            <input type="text" id="detailCommentInputField" class="comment-input-field" placeholder="Add a public comment...">
+            <button class="comment-send-btn" onclick="submitCommentAction()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- 🔓 ডিরেক্ট লিংক আনলক মডাল -->
+    <div id="directLinkModal" class="modal">
+        <div class="modal-content" style="background: #111113; border: 1px solid #27272a; padding: 30px 24px; border-radius: 24px; width: 92%; max-width: 400px; text-align: center; position: relative;">
+            <div class="close-icon" onclick="document.getElementById('directLinkModal').style.display='none'"><i class="fa-solid fa-xmark"></i></div>
+            
+            <div style="margin-top: 10px; margin-bottom: 15px; font-size: 50px; color: #eab308; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-lock"></i></div>
+            
+            <h2 style="color: #ffffff; font-size: 21px; font-weight: 800; margin-bottom: 4px;">Unlock Your Video</h2>
+            <p style="color: #a1a1aa; font-size: 14px; font-weight: 600; margin-bottom: 22px;">ভিডিও আনলক করুন</p>
+            
+            <div style="text-align: left; font-size: 13px; color: #cbd5e1; line-height: 1.6; display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px;">
+                <div>
+                    <div style="color: #f97316; font-weight: 800; font-size: 14px; display: flex; align-items: center; gap: 6px;">
+                        <i class="fa-regular fa-clock"></i> <span id="adNoticeTime">বিজ্ঞাপন দেখতে হবে।</span>
+                    </div>
+                    <div style="color: #f8fafc; font-weight: bold; padding-left: 20px; margin-top: 2px;">যদি না দেখেন, আপনার কাঙ্ক্ষিত ভিডিও পাবেন না।</div>
+                </div>
+                
+                <div style="color: #cbd5e1; font-weight: bold; padding-left: 20px; position: relative;">
+                    <span style="position: absolute; left: 0; top: 0;">•</span>
+                    নিচের বাটনে ক্লিক করুন এবং লিঙ্কে অপেক্ষা করে ফিরে আসুন।
+                </div>
+                
+                <div style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; border-radius: 8px; padding: 10px 12px; color: #cbd5e1; font-weight: bold; font-size: 12px; line-height: 1.5;">
+                    <i class="fa-solid fa-triangle-exclamation" style="color: #fbbf24; margin-right: 4px;"></i> 
+                    নির্দিষ্ট সময়ের আগে ফিরে আসলে ভিডিও পাঠানো হবে না।
+                </div>
+            </div>
+            
+            <button id="dlClickBtn" class="btn-submit" onclick="executeDirectLink()">
+                🎬 বিজ্ঞাপন দেখুন & ভিডিও আনলক করুন
+            </button>
+        </div>
+    </div>
+
+    <!-- ভিআইপি মডাল -->
+    <div id="vipModal" class="modal">
+        <div class="modal-content">
+            <div class="close-icon" onclick="document.getElementById('vipModal').style.display='none'"><i class="fa-solid fa-xmark"></i></div>
+            
+            <div style="display: flex; gap: 5px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px;">
+                <button class="cat-btn active" id="btnTabVip" onclick="switchVipModalTab('vip')">💎 VIP & Buy</button>
+                <button class="cat-btn" id="btnTabSpin" onclick="switchVipModalTab('spin')">🎡 Lucky Spin</button>
+                <button class="cat-btn" id="btnTabLeader" onclick="switchVipModalTab('leader')">🏆 Leaders</button>
+            </div>
+
+            <div id="modalTabVipContent">
+                <h2 style="color:#fbbf24; font-size: 21px; margin-bottom:12px;"><i class="fa-solid fa-gem"></i> Premium & Points</h2>
+                <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid #10b981; padding: 12px; border-radius: 12px; margin-bottom: 15px; text-align: left;">
+                    <p style="color:#4ade80; font-size: 13.5px; font-weight:bold; margin-bottom: 6px;"><i class="fa-solid fa-star"></i> VIP Benefits:</p>
+                    <ul style="color:#cbd5e1; font-size: 12px; line-height: 1.5; padding-left: 15px;">
+                        <li style="margin-bottom: 3px;"><b>Zero Ads:</b> Direct video unlock. No waiting.</li>
+                        <li style="margin-bottom: 3px;"><b>Priority Requests:</b> Admins prioritize your videos.</li>
+                        <li><b>Exclusive Badge:</b> Golden VIP profile badge.</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid #ef4444; padding: 12px; border-radius: 12px; margin-bottom: 15px;">
+                    <p style="color:#94a3b8; font-size: 13px; font-weight:bold;">Your Current Points:</p>
+                    <h1 style="color:#f87171; font-size: 28px; font-weight:900; margin: 3px 0;"><span id="modalCoinText">0</span> <i class="fa-solid fa-gem"></i></h1>
+                    <p style="color:#cbd5e1; font-size: 11px;">(<span id="vipDaysText">1</span> Days VIP = <span id="vipCostText">30</span> Points)</p>
+                </div>
+                
+                <button id="dailyCheckinBtn" class="btn-submit" style="background: linear-gradient(45deg, #10b981, #059669); margin-bottom: 10px;" onclick="claimDailyCheckin()">
+                    📅 Daily Check-in (+5 Points)
+                </button>
+
+                <button class="btn-submit" style="background: linear-gradient(45deg, #3b82f6, #2563eb); margin-bottom: 10px;" id="buyPointsAdminBtn">
+                    <i class="fa-brands fa-telegram"></i> Buy Points from Admin
+                </button>
+
+                <button id="coinAdBtn" class="btn-submit" style="background: linear-gradient(45deg, #ef4444, #f97316); margin-bottom: 10px;" onclick="executeCoinAd()">
+                    <i class="fa-solid fa-play"></i> Watch Ad & Get 5 Points
+                </button>
+                
+                <button class="btn-submit" style="background: linear-gradient(45deg, #f59e0b, #d97706);" onclick="buyVipWithCoins()">
+                    <i class="fa-solid fa-crown"></i> Get <span id="btnVipDays">1</span> Days VIP for <span id="btnVipCost">30</span> Points
+                </button>
+            </div>
+
+            <div id="modalTabSpinContent" style="display: none;">
+                <h2 style="color:#f59e0b; font-size: 21px; margin-bottom:10px;"><i class="fa-solid fa-circle-notch"></i> Lucky Spin Wheel</h2>
+                <p style="color:#94a3b8; font-size:12px; margin-bottom:15px;">Spend <b>5 Points</b> to spin the wheel and win huge points or VIP!</p>
+                
+                <div style="position: relative; width: 180px; height: 180px; margin: auto; border: 6px solid #334155; border-radius: 50%; overflow: hidden; background: #0f172a;" id="wheelOuter">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 45px; height: 45px; background: white; border-radius: 50%; border: 4px solid #334155; z-index: 10; display:flex; align-items:center; justify-content:center; color:#0f172a; font-size:18px;"><i class="fa-solid fa-arrow-up"></i></div>
+                    <div id="wheelInner" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(#ef4444 0deg 60deg, #3b82f6 60deg 120deg, #10b981 120deg 180deg, #f59e0b 180deg 240deg, #8b5cf6 240deg 300deg, #ec4899 300deg 360deg); transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);"></div>
+                </div>
+
+                <button id="spinBtn" class="btn-submit" style="background: linear-gradient(45deg, #f59e0b, #ef4444); margin-top: 20px;" onclick="spinWheel()">
+                    🎡 Spin (Cost: 5 Points)
+                </button>
+            </div>
+
+            <div id="modalTabLeaderContent" style="display: none;">
+                <h2 style="color:#60a5fa; font-size: 21px; margin-bottom:12px;"><i class="fa-solid fa-trophy"></i> Referrers Leaderboard</h2>
+                <p style="color:#94a3b8; font-size:12px; margin-bottom:15px;">Top referrers ranking. Refer friends and reach the top!</p>
+                <div id="leaderboardList" style="text-align: left; display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- রেফার মডাল -->
+    <div id="referModal" class="modal">
+        <div class="modal-content">
+            <div class="close-icon" onclick="document.getElementById('referModal').style.display='none'"><i class="fa-solid fa-xmark"></i></div>
+            <i class="fa-solid fa-share-nodes" style="font-size:55px; color:#ef4444;"></i>
+            <h2 style="margin:15px 0; color:white; font-size: 22px;">Refer & Earn</h2>
+            <p style="color:#cbd5e1; font-size:14px; margin-bottom:15px;">Get <b>10 Points</b> for each successful referral!</p>
+            <div style="background:#0b0f17; padding:15px; border:1px dashed #ef4444; border-radius:12px; margin-bottom:15px; word-break:break-all; font-size:13px;" id="refLinkText">...</div>
+            <button class="btn-submit" onclick="copyReferLink()">Copy Link</button>
+        </div>
+    </div>
+    
+    <!-- ওয়াচলিস্ট মডাল -->
+    <div id="watchlistModal" class="modal">
+        <div class="modal-content">
+            <div class="close-icon" onclick="document.getElementById('watchlistModal').style.display='none'"><i class="fa-solid fa-xmark"></i></div>
+            <h2 style="color:#ef4444; font-size: 20px; margin-bottom:15px;"><i class="fa-solid fa-bookmark"></i> My Watchlist</h2>
+            <div id="watchlistModalList" class="grid" style="padding:0; max-height: 60vh; overflow-y:auto; gap: 15px;">
+                <p style="color: #94a3b8;">Loading watchlist...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- রিকোয়েস্ট ট্র্যাকার মডাল -->
+    <div id="requestsTrackerModal" class="modal">
+        <div class="modal-content">
+            <div class="close-icon" onclick="document.getElementById('requestsTrackerModal').style.display='none'"><i class="fa-solid fa-xmark"></i></div>
+            <h2 style="color:#10b981; font-size: 20px; margin-bottom:10px;"><i class="fa-solid fa-code-pull-request"></i> Video Request Status</h2>
+            <p style="color:#cbd5e1; font-size:12px; margin-bottom:15px;">Submit and track the processing status of your requested videos!</p>
+            
+            <div style="display:flex; gap:8px; margin-bottom: 18px;">
+                <input type="text" id="reqTrackerInput" class="search-input" style="border-radius:12px; text-align:left; padding:10px 15px; font-size:14px;" placeholder="Enter Video name...">
+                <button class="btn-submit" style="width: auto; padding:0 18px; font-size:13px;" onclick="submitReqTracker()">Request</button>
+            </div>
+
+            <div id="requestsTrackerList" style="text-align: left; display: flex; flex-direction: column; gap: 10px; max-height: 45vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <!-- বিজ্ঞাপন প্রমোশন মডাল -->
+    <div id="adCampModal" class="modal">
+        <div class="modal-content">
+            <div class="close-icon" onclick="document.getElementById('adCampModal').style.display='none'"><i class="fa-solid fa-xmark"></i></div>
+            <h2 style="color:#fcd34d; font-size: 20px; margin-bottom:10px;"><i class="fa-solid fa-bullhorn"></i> Promote Channel</h2>
+            <p style="color:#cbd5e1; font-size:12px; margin-bottom:15px;">Run your advertisement in front of thousands of users!</p>
+            
+            <input type="text" id="campTitle" class="search-input" style="border-radius:10px; margin-bottom:10px; font-size:14px;" placeholder="Ad Title">
+            <input type="text" id="campSubtitle" class="search-input" style="border-radius:10px; margin-bottom:10px; font-size:14px;" placeholder="Ad Subtitle">
+            <input type="url" id="campLink" class="search-input" style="border-radius:10px; margin-bottom:10px; font-size:14px;" placeholder="https://t.me/yourlink">
+            <input type="url" id="campImg" class="search-input" style="border-radius:10px; margin-bottom:10px; font-size:14px;" placeholder="Image URL (Optional)">
+            
+            <select id="campPackage" class="search-input" style="border-radius:10px; margin-bottom:15px; font-size:14px; background:#111827; color:white; text-align:left;">
+                <option value="1">1 Day Campaign - 500 Points</option>
+                <option value="3">3 Days Campaign - 1200 Points</option>
+                <option value="7">7 Days Campaign - 2500 Points</option>
+            </select>
+            
+            <button id="campBtn" class="btn-submit" onclick="submitAdCampaign()">Pay Points & Start</button>
+        </div>
+    </div>
+
+    <!-- 🌐 জাভাস্ক্রিপ্ট কন্ট্রোলার -->
+    <script>
+        // -------------------------------------------------------------
+        // 🟢 আপনার Koyeb ব্যাকএন্ডের ডোমেইন লিঙ্ক নিচে বসান (শেষের স্লাশ ছাড়া)
+        // -------------------------------------------------------------
+        const BACKEND_URL = "https://your-koyeb-app-name.koyeb.app"; 
+        
+        let tg = window.Telegram.WebApp; 
+        try { tg.expand(); } catch(e) {}
+
+        const INIT_DATA = tg.initData || "";
+        let BOT_UNAME = "MovieZoneBot";
+        let AD_WAIT_TIME = 15; 
+        let AD_INTERVAL = 4;
+        let DIRECT_LINKS = [];
+        let SOCIAL_LINKS = {};
+
+        let uid = tg.initDataUnsafe?.user?.id || 0;
+        let isUserVip = false;
+        let isAdminUser = false; 
+        let userCoins = 0;
+        let loadedMovies = {}; 
+        let currentPage = 1; 
+        let searchQuery = "";
+        let currentCategory = "all";
+        let autoScrollInterval;
+        let activeAds = [];
+        let isCurrentMovieBookmarked = false;
+
+        let hasNextPage = true;
+        let isMoviesLoading = false;
+        let activeFetchController = null; 
+
+        let bannerConfig = {
+            enabled: false,
+            sticky_code: "",
+            native_code: "",
+            detail_code: ""
+        };
+
+        // পোস্টার ইউআরএল হেল্পার
+        function getPosterUrl(photoId) {
+            if (!photoId) return 'https://via.placeholder.com/640x360?text=No+Image';
+            if (photoId.startsWith('http://') || photoId.startsWith('https://')) return photoId;
+            return `${BACKEND_URL}/api/image/${photoId}`;
+        }
+
+        // 🛡️ অ্যান্টি-অ্যাডব্লকার ও AdGuard ডিটেকশন
+        async function isAdBlockerActive() {
+            if (isUserVip) return false;
+            try {
+                const bait = document.createElement('div');
+                bait.className = 'adsbox ad-placement pub_300x250 pub_300x250m text-ad textAd banner-ad ad-zone';
+                bait.style.cssText = 'width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;';
+                document.body.appendChild(bait);
+                const isDomBlocked = (window.getComputedStyle(bait).getPropertyValue('display') === 'none' || bait.offsetParent === null || bait.offsetHeight === 0);
+                bait.remove();
+                if (isDomBlocked) return true;
+            } catch(e) {}
+
+            const scriptBlocked = await new Promise((resolve) => {
+                const s = document.createElement('script');
+                s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+                s.async = true;
+                let timer = setTimeout(() => { s.remove(); resolve(false); }, 1000);
+                s.onerror = () => { clearTimeout(timer); s.remove(); resolve(true); };
+                s.onload = () => { clearTimeout(timer); s.remove(); resolve(false); };
+                document.head.appendChild(s);
+            });
+
+            if (scriptBlocked) return true;
+
+            try {
+                const ctrl = new AbortController();
+                const tid = setTimeout(() => ctrl.abort(), 1000);
+                await fetch('https://adservice.google.com/adsid/integrator.js', {
+                    method: 'GET', mode: 'no-cors', signal: ctrl.signal, cache: 'no-store'
+                });
+                clearTimeout(tid);
+            } catch(e) { return true; }
+
+            return false;
+        }
+
+        function showAdblockModal() {
+            const modal = document.getElementById('adblockModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                history.pushState({modal: 'adblockModal'}, "");
+                checkAndToggleTelegramBackButton();
+            }
+        }
+
+        async function retryAfterAdblock() {
+            const blocked = await isAdBlockerActive();
+            if (blocked) {
+                tg.showAlert("⚠️ AdGuard এখনো চালু আছে! অনুগ্রহ করে সেটিংসে গিয়ে Private DNS বা AdGuard বন্ধ করুন।");
+            } else {
+                document.getElementById('adblockModal').style.display = 'none';
+                tg.showAlert("✅ AdGuard বন্ধ হয়েছে! এবার ভিডিওটি ডাউনলোড করুন।");
+            }
+        }
+
+        function injectAdHtml(containerId, rawHtml, width = 320, height = 50) {
+            const container = document.getElementById(containerId);
+            if (!container || !rawHtml || isUserVip) {
+                if (container) container.style.display = 'none';
+                return;
+            }
+            container.innerHTML = '';
+            container.style.display = 'flex';
+
+            const iframe = document.createElement('iframe');
+            iframe.style.width = width === '100%' ? '100%' : (width + 'px');
+            iframe.style.height = height + 'px';
+            iframe.style.border = "none";
+            iframe.style.overflow = "hidden";
+            iframe.scrolling = "no";
+            iframe.style.margin = "auto";
+            iframe.style.display = "block";
+            
+            container.appendChild(iframe);
+            try {
+                const doc = iframe.contentWindow.document;
+                doc.open();
+                doc.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style></head><body>${rawHtml}</body></html>`);
+                doc.close();
+            } catch(e) { console.error("Ad inject error:", e); }
+        }
+
+        async function fetchBannerConfig() {
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/banners/get?_t=` + Date.now());
+                bannerConfig = await res.json();
+                
+                if (bannerConfig.enabled && !isUserVip) {
+                    if (bannerConfig.sticky_code) injectAdHtml('slotStickyBottom', bannerConfig.sticky_code, 320, 50);
+                    if (bannerConfig.detail_code) injectAdHtml('slotDetailBanner', bannerConfig.detail_code, 300, 250);
+                } else {
+                    const s = document.getElementById('slotStickyBottom');
+                    const d = document.getElementById('slotDetailBanner');
+                    if (s) s.style.display = 'none';
+                    if (d) d.style.display = 'none';
+                }
+            } catch(e) {}
+        }
+
+        function getInFeedBannerCard(idx) {
+            if (!bannerConfig.enabled || !bannerConfig.native_code || isUserVip) return '';
+            const slotId = 'feed_slot_' + idx;
+            setTimeout(() => { injectAdHtml(slotId, bannerConfig.native_code, 300, 250); }, 60);
+            return `<div class="banner-slot-container" id="${slotId}"></div>`;
+        }
+
+        async function loadCategories() {
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/categories?_t=` + Date.now());
+                const data = await res.json();
+                const bar = document.getElementById('categoryBar');
+                const allBtn = document.getElementById('catAllBtn');
+                
+                if (allBtn) allBtn.className = currentCategory === 'all' ? 'cat-chip-all active' : 'cat-chip-all';
+
+                let html = '';
+                if (data.categories && data.categories.length > 0) {
+                    data.categories.forEach(cat => {
+                        const activeCls = currentCategory === cat.name ? 'active' : '';
+                        html += `<div class="cat-chip ${activeCls}" onclick="selectCategory('${cat.name}', this)">${cat.icon || '🎬'} ${cat.name}</div>`;
+                    });
+                }
+                bar.innerHTML = html;
+            } catch(e) {}
+        }
+
+        function selectCategory(catName, elem) {
+            document.querySelectorAll('.cat-chip, .cat-chip-all').forEach(c => c.classList.remove('active'));
+            if(elem) elem.classList.add('active');
+            currentCategory = catName;
+            hasNextPage = true;
+            loadMovies(1, false);
+        }
+
+        function runSplashProgress() {
+            let pBar = document.getElementById('splashProgressBar');
+            let progress = 0;
+            let interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 15) + 12;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        let splash = document.getElementById('startupSplash');
+                        if (splash) {
+                            splash.style.opacity = '0';
+                            splash.style.visibility = 'hidden';
+                            setTimeout(() => splash.remove(), 600);
+                        }
+                    }, 300);
+                }
+                if (pBar) pBar.style.width = progress + '%';
+            }, 80);
+        }
+
+        function setNavActive(index) {
+            const items = document.querySelectorAll('.nav-item');
+            items.forEach((item, i) => { item.classList.toggle('active', i === index); });
+        }
+
+        async function fetchUserInfo() {
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/user/${uid}?_t=` + Date.now());
+                const data = await res.json();
+                isUserVip = data.vip;
+                userCoins = data.coins || 0;
+                BOT_UNAME = data.bot_username || BOT_UNAME;
+                AD_WAIT_TIME = data.ad_wait_time || AD_WAIT_TIME;
+                AD_INTERVAL = data.ad_interval || AD_INTERVAL;
+                DIRECT_LINKS = data.direct_links || [];
+                SOCIAL_LINKS = data.social_links || {};
+
+                document.getElementById('guideWaitTime').innerText = `${AD_WAIT_TIME} seconds`;
+                document.getElementById('adNoticeTime').innerText = `${AD_WAIT_TIME} সেকেন্ডের একটি বিজ্ঞাপন দেখতে হবে।`;
+
+                const vCost = data.vip_cost || 30;
+                const vDays = data.vip_days || 1;
+
+                document.getElementById('vipDaysText').innerText = vDays;
+                document.getElementById('vipCostText').innerText = vCost;
+                document.getElementById('btnVipDays').innerText = vDays;
+                document.getElementById('btnVipCost').innerText = vCost;
+
+                let firstName = tg.initDataUnsafe?.user?.first_name || 'Guest';
+                document.getElementById('menuUname').innerText = firstName;
+                
+                document.getElementById('coinDisplay').innerHTML = `<i class="fa-solid fa-gem"></i> ${userCoins}`;
+                document.getElementById('modalCoinText').innerText = userCoins;
+                
+                if(isUserVip) {
+                    document.getElementById('vipBadge').style.display = 'inline-block';
+                    document.getElementById('menuStatus').innerText = '👑 VIP User';
+                    document.getElementById('menuStatus').style.color = '#fbbf24';
+                    const s = document.getElementById('slotStickyBottom');
+                    if(s) s.style.display = 'none';
+                } else {
+                    document.getElementById('vipBadge').style.display = 'none';
+                    document.getElementById('menuStatus').innerText = 'Free User';
+                    document.getElementById('menuStatus').style.color = '#94a3b8';
+                }
+                
+                if(data.admin) {
+                    document.getElementById('adminMenuBtn').style.display = 'flex';
+                    document.getElementById('adminMenuBtn').onclick = () => window.open(`${BACKEND_URL}/admin`, '_blank');
+                    isAdminUser = true; 
+                }
+
+                document.getElementById('refLinkText').innerText = `https://t.me/${BOT_UNAME}?start=ref_${uid}`;
+                
+                if (SOCIAL_LINKS.tg_channel) {
+                    document.getElementById('ourChannelBtn').onclick = () => window.open(SOCIAL_LINKS.tg_channel);
+                    document.getElementById('floatTgBtn').onclick = () => window.open(SOCIAL_LINKS.tg_channel);
+                }
+                if (SOCIAL_LINKS.support_link) {
+                    document.getElementById('ourSupportBtn').onclick = () => window.open(SOCIAL_LINKS.support_link);
+                    document.getElementById('buyPointsAdminBtn').onclick = () => window.open(SOCIAL_LINKS.support_link);
+                }
+                if (SOCIAL_LINKS.link_18) {
+                    document.getElementById('float18Btn').onclick = () => window.open(SOCIAL_LINKS.link_18);
+                }
+            } catch(e) {}
+        }
+
+        async function fetchActiveAds() {
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/ads/active?_t=` + Date.now());
+                activeAds = await res.json();
+            } catch(e) {}
+        }
+
+        function getAdCarouselHTML(indexId) {
+            if(activeAds.length === 0) return '';
+            let sliderId = "slider_" + indexId;
+            
+            let adCards = activeAds.map(ad => {
+                let imgHtml = ad.image_url ? `<img src="${ad.image_url}" onerror="this.src='https://via.placeholder.com/640x360?text=No+Image'">` : `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#cbd5e1;"><i class="fa-solid fa-bullhorn text-slate-400" style="font-size:40px;"></i></div>`;
+                let subText = ad.subtitle || "দেরি না করে এখনো সবাই নিয়ে নিন";
+                return `
+                <div class="ad-carousel-card" onclick="window.open('${ad.link}', '_blank')">
+                    <div class="ad-carousel-img-wrap">${imgHtml}</div>
+                    <div class="ad-carousel-body">
+                        <div class="ad-carousel-title">${ad.title}</div>
+                        <div class="ad-carousel-subtitle">${subText}</div>
+                        <button class="ad-carousel-btn">Click Now</button>
+                    </div>
+                </div>`;
+            }).join('');
+
+            let dotsHtml = activeAds.map((_, dotIdx) => {
+                return `<span class="ad-carousel-dot ${dotIdx === 0 ? 'active' : ''}" id="dot_${sliderId}_${dotIdx}"></span>`;
+            }).join('');
+
+            return `
+            <div class="ad-carousel-container">
+                <div class="ad-carousel-track" id="track_${sliderId}" onscroll="syncAdDots('${sliderId}', ${activeAds.length})">${adCards}</div>
+                <div class="ad-carousel-dots">${dotsHtml}</div>
+            </div>`;
+        }
+
+        function syncAdDots(sliderId, totalAds) {
+            const track = document.getElementById('track_' + sliderId);
+            if(!track) return;
+            let scrollPos = track.scrollLeft;
+            let activeIdx = Math.round(scrollPos / 262);
+            if (activeIdx >= totalAds) activeIdx = totalAds - 1;
+            if (activeIdx < 0) activeIdx = 0;
+
+            for (let i = 0; i < totalAds; i++) {
+                const dot = document.getElementById(`dot_${sliderId}_${i}`);
+                if (dot) dot.classList.toggle('active', i === activeIdx);
+            }
+        }
+
+        function toggleMenu(e) { 
+            e.stopPropagation(); 
+            setNavActive(3);
+            const m = document.getElementById('dropdownMenu'); 
+            m.style.display = m.style.display === 'block' ? 'none' : 'block'; 
+        }
+        function closeMenu() { document.getElementById('dropdownMenu').style.display = 'none'; }
+        
+        function goHome() { 
+            setNavActive(0);
+            document.getElementById('searchInput').value = ""; 
+            searchQuery = ""; 
+            currentCategory = "all";
+            loadCategories();
+            document.getElementById('trendingWrapper').style.display = 'block';
+            loadTrending();
+            loadMovies(1, false); 
+            closeMenu(); 
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        }
+        
+        function focusSearch() {
+            setNavActive(1);
+            closeMenu();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => document.getElementById('searchInput').focus(), 300);
+        }
+        
+        function openVipModal() { 
+            setNavActive(2);
+            switchVipModalTab('vip');
+            document.getElementById('vipModal').style.display = 'flex'; 
+            history.pushState({modal: 'vipModal'}, "");
+            checkAndToggleTelegramBackButton();
+            closeMenu(); 
+        }
+
+        function switchVipModalTab(tab) {
+            document.getElementById('modalTabVipContent').style.display = tab === 'vip' ? 'block' : 'none';
+            document.getElementById('modalTabSpinContent').style.display = tab === 'spin' ? 'block' : 'none';
+            document.getElementById('modalTabLeaderContent').style.display = 'none';
+            
+            document.getElementById('btnTabVip').className = tab === 'vip' ? 'cat-btn active' : 'cat-btn';
+            document.getElementById('btnTabSpin').className = tab === 'spin' ? 'cat-btn active' : 'cat-btn';
+            document.getElementById('btnTabLeader').className = tab === 'leader' ? 'cat-btn active' : 'cat-btn';
+
+            if (tab === 'leader') { renderLeaderboard(); }
+        }
+
+        function openReferModal() { 
+            document.getElementById('referModal').style.display = 'flex'; 
+            history.pushState({modal: 'referModal'}, "");
+            checkAndToggleTelegramBackButton();
+            closeMenu(); 
+        }
+        
+        function copyReferLink() { navigator.clipboard.writeText(document.getElementById('refLinkText').innerText); tg.showAlert("✅ Copied!"); }
+        
+        function openWatchlistModal() {
+            document.getElementById('watchlistModal').style.display = 'flex';
+            history.pushState({modal: 'watchlistModal'}, "");
+            checkAndToggleTelegramBackButton();
+            closeMenu();
+            renderWatchlist();
+        }
+
+        async function renderWatchlist() {
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/watchlist/list/${uid}?_t=${Date.now()}`);
+                const data = await res.json();
+                let html = '';
+                if (!data.watchlist || data.watchlist.length === 0) {
+                    html = '<p style="color: #cbd5e1; text-align:center; padding: 20px;">Your Watchlist is empty!</p>';
+                } else {
+                    data.watchlist.forEach(m => {
+                        const safeTitle = m.title.trim();
+                        loadedMovies[safeTitle] = {
+                            _id: safeTitle,
+                            photo_id: m.photo_id,
+                            files: m.files,
+                            clicks: m.clicks || 0
+                        };
+                        
+                        html += `
+                        <div class="card" onclick="openQualityModal(this)" data-title="${encodeURIComponent(safeTitle)}">
+                            <div class="post-content shimmer-placeholder">
+                                <img src="${getPosterUrl(m.photo_id)}" loading="lazy" onload="this.parentNode.classList.remove('shimmer-placeholder')" onerror="this.src='https://via.placeholder.com/640x360?text=No+Image'">
+                                <div class="ep-badge"><i class="fa-solid fa-bookmark text-yellow-400"></i> Saved</div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="channel-logo">BD</div>
+                                <div class="title-text">${m.title}</div>
+                            </div>
+                        </div>`;
+                    });
+                }
+                document.getElementById('watchlistModalList').innerHTML = html;
+            } catch(e) {}
+        }
+
+        async function toggleWatchlist() {
+            const title = document.getElementById('detailMovieTitle').innerText.trim();
+            let endpoint = isCurrentMovieBookmarked ? `${BACKEND_URL}/api/watchlist/remove` : `${BACKEND_URL}/api/watchlist/add`;
+            try {
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ uid: uid, title: title, initData: INIT_DATA })
+                });
+                const d = await res.json();
+                if (d.ok) {
+                    isCurrentMovieBookmarked = !isCurrentMovieBookmarked;
+                    updateBookmarkButtonUI();
+                    tg.showAlert(isCurrentMovieBookmarked ? "💾 Added to Watchlist!" : "❌ Removed from Watchlist!");
+                }
+            } catch(e) {}
+        }
+
+        function updateBookmarkButtonUI() {
+            const btn = document.getElementById('bookmarkBtn');
+            if (isCurrentMovieBookmarked) {
+                btn.innerHTML = '<i class="fa-solid fa-bookmark text-yellow-400"></i> Saved';
+                btn.style.background = 'rgba(250,204,21,0.1)';
+                btn.style.borderColor = 'rgba(250,204,21,0.4)';
+            } else {
+                btn.innerHTML = '<i class="fa-regular fa-bookmark"></i> Save Later';
+                btn.style.background = 'rgba(239, 68, 68, 0.1)';
+                btn.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+            }
+        }
+
+        async function claimDailyCheckin() {
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/gamification/daily_checkin`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ uid: uid, initData: INIT_DATA })
+                });
+                const d = await res.json();
+                if (d.ok) {
+                    tg.showAlert(`🎉 Checked-in Successfully! You received +5 Points.`);
+                    fetchUserInfo();
+                } else {
+                    tg.showAlert(`⚠️ ${d.msg}`);
+                }
+            } catch(e) {}
+        }
+
+        let isSpinning = false;
+        async function spinWheel() {
+            if (isSpinning) return;
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/gamification/spin`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ uid: uid, initData: INIT_DATA })
+                });
+                const data = await res.json();
+                if (!data.ok) {
+                    tg.showAlert(`⚠️ ${data.msg}`);
+                    return;
+                }
+
+                isSpinning = true;
+                const inner = document.getElementById('wheelInner');
+                const degMap = { 0: 25, 2: 75, 5: 125, 10: 175, 20: 225, 50: 275, vip: 325 };
+                let prizeKey = data.reward.type === 'points' ? data.reward.amount : 'vip';
+                let targetDeg = degMap[prizeKey] || 25;
+                let finalRotation = (5 * 360) + (360 - targetDeg);
+
+                inner.style.transform = `rotate(${finalRotation}deg)`;
+
+                setTimeout(() => {
+                    tg.showAlert(data.msg);
+                    isSpinning = false;
+                    inner.style.transition = 'none';
+                    inner.style.transform = `rotate(${360 - targetDeg}deg)`;
+                    setTimeout(() => { inner.style.transition = 'transform 4s cubic-bezier(0.25, 0.1, 0.25, 1)'; }, 50);
+                    fetchUserInfo();
+                }, 4100);
+            } catch(e) { isSpinning = false; }
+        }
+
+        async function renderLeaderboard() {
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/gamification/leaderboard?_t=` + Date.now());
+                const d = await res.json();
+                let html = '';
+                d.leaderboard.forEach((user, idx) => {
+                    let rankMedal = idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : `[${idx+1}]`;
+                    html += `
+                    <div style="background: rgba(30,41,59,0.5); padding: 10px 15px; border-radius: 12px; border:1px solid rgba(255,255,255,0.06); display:flex; justify-content:space-between; align-items:center;">
+                        <div style="display:flex; align-items:center; gap: 10px;">
+                            <span style="font-size:16px;">${rankMedal}</span>
+                            <span style="font-weight:bold; color:white;">${user.name}</span>
+                        </div>
+                        <div style="text-align:right;">
+                            <span style="color:#fbbf24; font-weight:bold; font-size:13px;"><i class="fa-solid fa-share-nodes"></i> ${user.refer_count} Ref</span>
+                        </div>
+                    </div>`;
+                });
+                document.getElementById('leaderboardList').innerHTML = html || '<p class="text-gray-500">No leaderboard entries.</p>';
+            } catch(e) {}
+        }
+
+        function openRequestsTrackerModal() {
+            document.getElementById('requestsTrackerModal').style.display = 'flex';
+            history.pushState({modal: 'requestsTrackerModal'}, "");
+            checkAndToggleTelegramBackButton();
+            closeMenu();
+            renderRequestsTracker();
+        }
+
+        async function submitReqTracker() {
+            const val = document.getElementById('reqTrackerInput').value.trim();
+            if (!val) return;
+            const uname = tg.initDataUnsafe?.user?.first_name || 'Guest';
+
+            try {
+                await fetch(`${BACKEND_URL}/api/request`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ uid: uid, uname: uname, movie: val, initData: INIT_DATA })
+                });
+                document.getElementById('reqTrackerInput').value = '';
+                tg.showAlert('🎉 Request successfully queued!');
+                renderRequestsTracker();
+            } catch(e) {}
+        }
+
+        async function renderRequestsTracker() {
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/requests/user_list/${uid}?_t=${Date.now()}`);
+                const d = await res.json();
+                let html = '';
+                d.requests.forEach(req => {
+                    let statusText = req.status === 'pending' ? '⏳ Pending Review' : req.status === 'processing' ? '⚙️ Processing Video' : '✅ Uploaded successfully!';
+                    let pct = req.status === 'pending' ? 30 : req.status === 'processing' ? 70 : 100;
+                    let barColor = req.status === 'pending' ? '#f59e0b' : req.status === 'processing' ? '#3b82f6' : '#10b981';
+                    
+                    html += `
+                    <div style="background: rgba(30,41,59,0.5); padding: 15px; border-radius: 12px; border:1px solid rgba(255,255,255,0.06);">
+                        <div style="display:flex; justify-content:space-between; margin-bottom: 6px;">
+                            <span style="font-weight:bold; color:white;">${req.movie}</span>
+                            <span style="font-size:11px; font-weight:bold; color:${barColor};">${statusText}</span>
+                        </div>
+                        <div style="width: 100%; background: #374151; height: 8px; border-radius: 9999px; overflow: hidden;">
+                            <div style="height:100%; width:${pct}%; background:${barColor}; border-radius:10px;"></div>
+                        </div>
+                    </div>`;
+                });
+                document.getElementById('requestsTrackerList').innerHTML = html || '<p style="color: #64748b; text-align:center;">You have not made any video requests yet.</p>';
+            } catch(e) {}
+        }
+
+        function openAdCampModal() {
+            document.getElementById('adCampModal').style.display = 'flex';
+            history.pushState({modal: 'adCampModal'}, "");
+            checkAndToggleTelegramBackButton();
+            closeMenu();
+        }
+
+        async function submitAdCampaign() {
+            const title = document.getElementById('campTitle').value;
+            const subtitle = document.getElementById('campSubtitle').value || "দেরি না করে এখনো সবাই নিয়ে নিন";
+            const link = document.getElementById('campLink').value;
+            const img = document.getElementById('campImg').value;
+            const packageDays = parseInt(document.getElementById('campPackage').value);
+            
+            let cost = 500;
+            if(packageDays === 3) cost = 1200;
+            if(packageDays === 7) cost = 2500;
+            
+            if(!title || !link) { tg.showAlert("Title and Link are required!"); return; }
+            
+            if(confirm(`Cost is ${cost} Points for ${packageDays} Days. Proceed?`)) {
+                try {
+                    const res = await fetch(`${BACKEND_URL}/api/ads/create`, { 
+                        method: 'POST', 
+                        headers: {'Content-Type': 'application/json'}, 
+                        body: JSON.stringify({uid: uid, initData: INIT_DATA, title: title, subtitle: subtitle, link: link, image_url: img, package: packageDays}) 
+                    });
+                    const data = await res.json();
+                    
+                    if(data.ok) {
+                        tg.showAlert("🎉 Campaign Started Successfully!");
+                        document.getElementById('adCampModal').style.display = 'none';
+                        fetchUserInfo(); 
+                        fetchActiveAds(); 
+                    } else {
+                        tg.showAlert("⚠️ " + data.msg);
+                    }
+                } catch(e) { tg.showAlert("Network Error!"); }
+            }
+        }
+
+        function formatViews(n) { if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M'; if (n >= 1000) return (n / 1000).toFixed(1) + 'K'; return n; }
+        function makeSafeId(str) { return str.replace(/[^a-zA-Z0-9]/g, '_'); }
+
+        function startAutoScroll() {
+            if(autoScrollInterval) clearInterval(autoScrollInterval);
+            autoScrollInterval = setInterval(() => {
+                let grid = document.getElementById('trendingGrid');
+                if(grid) {
+                    if (grid.scrollLeft >= (grid.scrollWidth - grid.clientWidth - 10)) grid.scrollTo({ left: 0, behavior: 'smooth' });
+                    else grid.scrollBy({ left: 295, behavior: 'smooth' });
+                }
+            }, 3000);
+        }
+
+        async function loadTrending() {
+            try {
+                const r = await fetch(`${BACKEND_URL}/api/trending?uid=${uid}&_t=${Date.now()}`);
+                const data = await r.json();
+                const grid = document.getElementById('trendingGrid');
+                if(data.length === 0) return document.getElementById('trendingWrapper').style.display = 'none';
+                grid.innerHTML = data.map(m => {
+                    const safeKey = m._id.trim();
+                    loadedMovies[safeKey] = m;
+                    let totalParts = m.files.length;
+                    let partText = totalParts === 1 ? 'Part' : 'Parts';
+                    
+                    return `<div class="trending-card" onclick="openQualityModal(this)" data-title="${encodeURIComponent(safeKey)}">
+                        <div class="post-content shimmer-placeholder">
+                            <div class="top-badge">🔥 TOP</div>
+                            <img src="${getPosterUrl(m.photo_id)}" loading="lazy" onload="this.parentNode.classList.remove('shimmer-placeholder')" onerror="this.src='https://via.placeholder.com/640x360?text=No+Image'">
+                            <div class="ep-badge"><i class="fa-solid fa-list"></i> ${totalParts} ${partText}</div>
+                            <div class="view-badge" id="trend-view-${makeSafeId(safeKey)}"><i class="fa-solid fa-eye"></i> ${formatViews(m.clicks)}</div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="channel-logo">BD</div>
+                            <div class="title-text">${m._id}</div>
+                        </div>
+                    </div>`;
+                }).join('');
+                setTimeout(startAutoScroll, 1000);
+            } catch(e) {}
+        }
+
+        async function loadMovies(page = 1, append = false) {
+            if (isMoviesLoading) return;
+            isMoviesLoading = true;
+            currentPage = page;
+
+            const grid = document.getElementById('movieGrid');
+            const loader = document.getElementById('infiniteLoader');
+            
+            if (!append) {
+                grid.innerHTML = "<p style='color:#9ca3af; text-align:center; padding: 20px;'>Loading BD Viral Link...</p>";
+                hasNextPage = true;
+            } else {
+                loader.style.display = 'flex';
+            }
+
+            if (activeFetchController) activeFetchController.abort();
+            activeFetchController = new AbortController();
+            const signal = activeFetchController.signal;
+
+            try {
+                const url = `${BACKEND_URL}/api/list?page=${currentPage}&q=${encodeURIComponent(searchQuery)}&category=${encodeURIComponent(currentCategory)}&uid=${uid}&_t=${Date.now()}`;
+                const r = await fetch(url, { signal });
+                const data = await r.json();
+                
+                loader.style.display = 'none';
+                
+                if (data.movies.length === 0) {
+                    hasNextPage = false;
+                    if (!append) {
+                        grid.innerHTML = `<p style='text-align:center; color:#ef4444; padding: 20px;'>No videos found in this category!</p>`;
+                    }
+                    isMoviesLoading = false;
+                    return;
+                }
+
+                let htmlContent = "";
+                data.movies.forEach((m, index) => {
+                    const safeKey = m._id.trim();
+                    loadedMovies[safeKey] = m; 
+                    let totalParts = m.files.length;
+                    let partText = totalParts === 1 ? 'Part' : 'Parts';
+                    
+                    let cardHtml = `<div class="card" onclick="openQualityModal(this)" data-title="${encodeURIComponent(safeKey)}">
+                        <div class="post-content shimmer-placeholder">
+                            <img src="${getPosterUrl(m.photo_id)}" loading="lazy" onload="this.parentNode.classList.remove('shimmer-placeholder')" onerror="this.src='https://via.placeholder.com/640x360?text=No+Image'">
+                            <div class="ep-badge"><i class="fa-solid fa-list"></i> ${totalParts} ${partText}</div>
+                            <div class="view-badge" id="list-view-${makeSafeId(safeKey)}"><i class="fa-solid fa-eye"></i> ${formatViews(m.clicks)}</div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="channel-logo">BD</div>
+                            <div class="title-text">${m._id}</div>
+                        </div>
+                    </div>`;
+                    htmlContent += cardHtml;
+                    
+                    let visualIndex = index + 1 + ((currentPage - 1) * 15);
+                    if (visualIndex % 6 === 0) {
+                        htmlContent += getInFeedBannerCard(visualIndex);
+                    } else if (activeAds.length > 0 && visualIndex % AD_INTERVAL === 0) {
+                        htmlContent += getAdCarouselHTML(visualIndex);
+                    }
+                });
+                
+                if (append) grid.insertAdjacentHTML('beforeend', htmlContent);
+                else grid.innerHTML = htmlContent;
+
+                if (currentPage >= data.total_pages) hasNextPage = false;
+            } catch(e) {
+                if (e.name !== 'AbortError') console.error(e);
+            } finally {
+                isMoviesLoading = false;
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!hasNextPage || isMoviesLoading) return;
+            if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 250)) {
+                loadMovies(currentPage + 1, true);
+            }
+        });
+
+        let timeout = null;
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            clearTimeout(timeout); 
+            searchQuery = e.target.value.trim();
+            
+            const elementsToToggle = [
+                document.getElementById('trendingWrapper'),
+                document.getElementById('recentTitle'),
+                document.getElementById('categoryPanel'),
+                document.getElementById('communityBox'),
+                document.querySelector('.developer-credit')
+            ];
+
+            if(searchQuery !== "") { 
+                elementsToToggle.forEach(el => { if(el) el.style.display = 'none'; });
+            } else { 
+                if(document.getElementById('trendingWrapper')) document.getElementById('trendingWrapper').style.display = 'block';
+                if(document.getElementById('recentTitle')) document.getElementById('recentTitle').style.display = 'flex';
+                if(document.getElementById('categoryPanel')) document.getElementById('categoryPanel').style.display = 'flex';
+                if(document.getElementById('communityBox')) document.getElementById('communityBox').style.display = 'block';
+                if(document.querySelector('.developer-credit')) document.querySelector('.developer-credit').style.display = 'block';
+            }
+            
+            timeout = setTimeout(() => {
+                hasNextPage = true;
+                loadMovies(1, false);
+            }, 500); 
+        });
+
+        async function fetchMovieStats(title) {
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/movie_stats/${encodeURIComponent(title.trim())}?uid=${uid}&_t=${Date.now()}`);
+                const data = await res.json();
+                
+                document.getElementById('detailLikeCount').innerText = data.likes || 0;
+                document.getElementById('detailDlCount').innerText = data.downloads || 0;
+                document.getElementById('detailCommentCount').innerText = data.comments || 0;
+                document.getElementById('detailShareCount').innerText = data.shares || 0;
+                
+                const likeBtn = document.getElementById('detailMainLikeBtn');
+                const likeText = document.getElementById('detailMainLikeText');
+                const likeIcon = document.getElementById('detailLikeIcon');
+                
+                if (data.liked) {
+                    likeBtn.classList.add('liked');
+                    likeText.innerText = "Liked";
+                    likeIcon.style.color = "#ef4444";
+                } else {
+                    likeBtn.classList.remove('liked');
+                    likeText.innerText = "Like";
+                    likeIcon.style.color = "#94a3b8";
+                }
+            } catch(e) {}
+        }
+
+        async function loadComments(title) {
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/comments/get/${encodeURIComponent(title.trim())}?_t=${Date.now()}`);
+                const data = await res.json();
+                
+                const totalComments = data.comments ? data.comments.length : 0;
+                document.getElementById('detailCommentCount').innerText = totalComments;
+                document.getElementById('commentsHeaderLabel').innerText = `Comments (${totalComments})`;
+                
+                let html = '';
+                if (!data.comments || data.comments.length === 0) {
+                    html = `
+                    <div style="text-align:center; padding: 30px 15px; color:#94a3b8;">
+                        <p style="font-size: 15px; margin-bottom: 5px;">এখনো কোনো কমেন্ট নেই।</p>
+                        <p style="font-size: 12px; color:#64748b;">প্রথম কমেন্টটি আপনিই করুন! 💬</p>
+                    </div>`;
+                } else {
+                    data.comments.forEach(c => {
+                        let adminReplyHtml = '';
+                        if (c.replies && c.replies.length > 0) {
+                            c.replies.forEach(r => {
+                                adminReplyHtml += `
+                                <div class="reply-item">
+                                    <div class="comment-avatar" style="background:#10b981;">A</div>
+                                    <div style="display:flex; flex-direction:column; text-align:left; flex-grow:1;">
+                                        <div style="display:flex; align-items:center; margin-bottom: 2px;">
+                                            <span class="comment-username">${r.admin_name || 'Admin'}</span>
+                                            <span class="admin-badge">Admin</span>
+                                        </div>
+                                        <span class="comment-text">${r.reply_text}</span>
+                                    </div>
+                                </div>`;
+                            });
+                        }
+                        
+                        let replyBtnHtml = '';
+                        if (isAdminUser) {
+                            replyBtnHtml = `<button class="comment-reply-btn" onclick="triggerReply('${c._id}', '${c.uname}')"><i class="fa-solid fa-reply"></i> Reply</button>`;
+                        }
+                        
+                        html += `
+                        <div class="comment-item">
+                            <div class="comment-avatar">${c.uname ? c.uname.charAt(0).toUpperCase() : 'U'}</div>
+                            <div class="comment-body">
+                                <div class="comment-user-row"><span class="comment-username">${c.uname}</span></div>
+                                <span class="comment-text">${c.comment}</span>
+                                ${replyBtnHtml}
+                                <div class="comment-replies-list">${adminReplyHtml}</div>
+                            </div>
+                        </div>`;
+                    });
+                }
+                document.getElementById('detailCommentsList').innerHTML = html;
+            } catch(e) {}
+        }
+
+        async function openQualityModal(element) {
+            let title = "";
+            try { title = decodeURIComponent(element.getAttribute('data-title')).trim(); } catch(e) { title = element.getAttribute('data-title').trim(); }
+
+            const movie = loadedMovies[title];
+            if (!movie) return;
+            
+            document.getElementById('detailLikeCount').innerText = "0";
+            document.getElementById('detailDlCount').innerText = "0";
+            document.getElementById('detailCommentCount').innerText = "0";
+            document.getElementById('detailShareCount').innerText = "0";
+            document.getElementById('detailCommentsList').innerHTML = `<div style="text-align:center; padding: 30px; color:#94a3b8;"><i class="fa-solid fa-spinner fa-spin" style="font-size:24px; margin-bottom:10px;"></i><p style="font-size:13px;">Loading comments...</p></div>`;
+            
+            document.getElementById('detailMovieTitle').innerText = title;
+            document.getElementById('detailPosterImg').src = getPosterUrl(movie.photo_id);
+            
+            document.getElementById('qualityModal').style.display = 'flex';
+            document.getElementById('stickyCommentBar').style.display = 'flex';
+            
+            history.pushState({modal: 'qualityModal'}, "");
+            checkAndToggleTelegramBackButton();
+            
+            document.getElementById('bookmarkBtn').innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Checking...';
+            
+            fetchMovieStats(title);
+            loadComments(title);
+            
+            fetch(`${BACKEND_URL}/api/watchlist/list/${uid}?_t=${Date.now()}`)
+                .then(res => res.json())
+                .then(wlData => {
+                    isCurrentMovieBookmarked = wlData.watchlist.some(w => w.title.trim() === title);
+                    updateBookmarkButtonUI();
+                })
+                .catch(e => {
+                    isCurrentMovieBookmarked = false;
+                    updateBookmarkButtonUI();
+                });
+            
+            fetch(`${BACKEND_URL}/api/view_movie`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({title: title})
+            }).catch(e => {});
+            
+            movie.clicks = (movie.clicks || 0) + 1;
+            let safeId = makeSafeId(title);
+            let tBadge = document.getElementById('trend-view-' + safeId);
+            let lBadge = document.getElementById('list-view-' + safeId);
+            if(tBadge) tBadge.innerHTML = '<i class="fa-solid fa-eye"></i> ' + formatViews(movie.clicks);
+            if(lBadge) lBadge.innerHTML = '<i class="fa-solid fa-eye"></i> ' + formatViews(movie.clicks);
+        }
+
+        function openDownloadList() {
+            const title = document.getElementById('detailMovieTitle').innerText.trim();
+            const movie = loadedMovies[title];
+            if (!movie) return;
+            
+            document.getElementById('popupQualityList').innerHTML = movie.files.map(f => {
+                let isFree = f.is_unlocked || isUserVip;
+                let icon = isFree ? '<i class="fa-solid fa-paper-plane text-green-400"></i>' : '<i class="fa-solid fa-lock text-red-400"></i>';
+                let cls = isFree ? 'border-left: 5px solid #10b981;' : 'border-left: 5px solid #ef4444;';
+                return `<div class="rgb-border" onclick="handleQualityClick('${f.id}', ${f.is_unlocked})"><div class="rgb-inner" style="${cls}"><span><i class="fa-solid fa-download"></i> ${f.quality}</span> ${icon}</div></div>`;
+            }).join('');
+            
+            document.getElementById('downloadListModal').style.display = 'flex';
+            history.pushState({modal: 'downloadListModal'}, "");
+            checkAndToggleTelegramBackButton();
+        }
+
+        async function toggleLikeAction() {
+            const title = document.getElementById('detailMovieTitle').innerText.trim();
+            const likeBtn = document.getElementById('detailMainLikeBtn');
+            const likeText = document.getElementById('detailMainLikeText');
+            const likeIcon = document.getElementById('detailLikeIcon');
+            const likeCountEl = document.getElementById('detailLikeCount');
+            
+            let isLiked = likeBtn.classList.contains('liked');
+            let currentLikes = parseInt(likeCountEl.innerText) || 0;
+            
+            if (isLiked) {
+                likeBtn.classList.remove('liked');
+                likeText.innerText = "Like";
+                likeIcon.style.color = "#94a3b8";
+                likeCountEl.innerText = Math.max(0, currentLikes - 1);
+            } else {
+                likeBtn.classList.add('liked');
+                likeText.innerText = "Liked";
+                likeIcon.style.color = "#ef4444";
+                likeCountEl.innerText = currentLikes + 1;
+            }
+            
+            try {
+                await fetch(`${BACKEND_URL}/api/like`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ uid: uid, title: title, initData: INIT_DATA })
+                });
+                fetchMovieStats(title);
+            } catch(e) { fetchMovieStats(title); }
+        }
+
+        function shareMovie() {
+            const title = document.getElementById('detailMovieTitle').innerText.trim();
+            const safeTitleB64 = btoa(unescape(encodeURIComponent(title))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+            const shareText = encodeURIComponent(`Watch "${title}" on BD Viral Link!`);
+            const shareUrl = `https://t.me/${BOT_UNAME}?start=movie_${safeTitleB64}`;
+            const tgShareLink = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${shareText}`;
+            
+            tg.openTelegramLink(tgShareLink);
+            fetch(`${BACKEND_URL}/api/share`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ title: title }) }).then(() => fetchMovieStats(title)).catch(e => {});
+        }
+
+        let currentReplyId = null;
+        function triggerReply(commentId, username) {
+            currentReplyId = commentId;
+            document.getElementById('replyingText').innerText = `Replying to ${username}`;
+            document.getElementById('replyingIndicator').style.display = 'flex';
+            document.getElementById('detailCommentInputField').focus();
+        }
+
+        function cancelReply() {
+            currentReplyId = null;
+            document.getElementById('replyingIndicator').style.display = 'none';
+            document.getElementById('detailCommentInputField').value = '';
+        }
+
+        async function submitCommentAction() {
+            const title = document.getElementById('detailMovieTitle').innerText.trim();
+            const commentVal = document.getElementById('detailCommentInputField').value.trim();
+            const uname = tg.initDataUnsafe?.user?.first_name || 'Guest';
+            if (!commentVal) return;
+
+            const SPAM_REGEX = /(https?:\/\/[^\s]+)|(www\.[^\s]+)|(t\.me\/[^\s]+)|(telegram\.me\/[^\s]+)|(telegram\.dog\/[^\s]+)|(@[a-zA-Z0-9_]{4,})|(t\s*[\.\[\(\{\s]+\s*me)|([a-zA-Z0-9_-]+\s*[\.\[\(\{\s]+(com|net|org|xyz|top|site|online|me|info|bd|store|tech|club|in|co|app)\b)/i;
+            if (SPAM_REGEX.test(commentVal)) {
+                tg.showAlert("⚠️ এখানে কোনো প্রকার লিংক, বট/চ্যানেল প্রমোশন বা ওয়েবসাইট শেয়ার করা সম্পূর্ণ নিষিদ্ধ!");
+                return;
+            }
+            
+            document.getElementById('detailCommentInputField').value = '';
+            const tempReplyId = currentReplyId;
+            cancelReply();
+            
+            try {
+                let res;
+                if (tempReplyId) {
+                    res = await fetch(`${BACKEND_URL}/api/comments/reply`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ comment_id: tempReplyId, reply_text: commentVal, admin_name: uname, initData: INIT_DATA }) });
+                } else {
+                    res = await fetch(`${BACKEND_URL}/api/comments/add`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ uid: uid, uname: uname, title: title, comment: commentVal, initData: INIT_DATA }) });
+                }
+                const data = await res.json();
+                if (data.ok) {
+                    loadComments(title); 
+                    fetchMovieStats(title);
+                } else {
+                    tg.showAlert(data.msg || "⚠️ কমেন্ট পোস্ট করা সম্ভব হয়নি।");
+                    loadComments(title); 
+                }
+            } catch(e) { loadComments(title); }
+        }
+
+        let currentFileId = null; 
+        async function handleQualityClick(fileId, isUnlocked) {
+            document.getElementById('downloadListModal').style.display = 'none';
+            
+            if (!isUnlocked && !isUserVip) {
+                const blocked = await isAdBlockerActive();
+                if (blocked) {
+                    showAdblockModal();
+                    return;
+                }
+            }
+
+            const title = document.getElementById('detailMovieTitle').innerText.trim();
+            fetch(`${BACKEND_URL}/api/download`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ title: title }) }).then(() => fetchMovieStats(title)).catch(e => {});
+
+            if(isUnlocked || isUserVip) { 
+                sendFileAndClose(fileId); 
+            } else { 
+                currentFileId = fileId; 
+                document.getElementById('directLinkModal').style.display = 'flex';
+                history.replaceState({modal: 'directLinkModal'}, "");
+                checkAndToggleTelegramBackButton();
+                resetDlButton();
+            }
+        }
+
+        let linkOpenedAt = 0;
+        let isWaitingForReturn = false;
+        let dlTimerInterval = null;
+
+        function resetDlButton() {
+            const btn = document.getElementById('dlClickBtn');
+            btn.onclick = executeDirectLink;
+            btn.innerHTML = "🎬 বিজ্ঞাপন দেখুন & ভিডিও আনলক করুন";
+            btn.disabled = false;
+        }
+
+        async function executeDirectLink() {
+            if (!isUserVip) {
+                const blocked = await isAdBlockerActive();
+                if (blocked) {
+                    document.getElementById('directLinkModal').style.display = 'none';
+                    showAdblockModal();
+                    return;
+                }
+            }
+
+            if (!DIRECT_LINKS || DIRECT_LINKS.length === 0) { 
+                document.getElementById('directLinkModal').style.display = 'none'; 
+                if (currentFileId) sendFileAndClose(currentFileId); 
+                return; 
+            }
+            
+            fetch(`${BACKEND_URL}/api/start_timer`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ uid: uid, initData: INIT_DATA }) }).catch(e => {});
+            
+            tg.openLink(DIRECT_LINKS[Math.floor(Math.random() * DIRECT_LINKS.length)]);
+            linkOpenedAt = Date.now(); 
+            isWaitingForReturn = true;
+            
+            const btn = document.getElementById('dlClickBtn');
+            btn.disabled = true; 
+            btn.style.background = "#475569";
+            
+            if (dlTimerInterval) clearInterval(dlTimerInterval);
+            dlTimerInterval = setInterval(() => {
+                const elapsed = Date.now() - linkOpenedAt;
+                const remaining = Math.ceil((AD_WAIT_TIME * 1000 - elapsed) / 1000);
+                
+                if (remaining > 0) {
+                    btn.innerHTML = `⏳ অনুগ্রহ করে অপেক্ষা করুন... (${remaining}s)`;
+                } else {
+                    clearInterval(dlTimerInterval);
+                    if (isWaitingForReturn) {
+                        isWaitingForReturn = false;
+                        document.getElementById('directLinkModal').style.display = 'none';
+                        if (currentFileId) sendFileAndClose(currentFileId);
+                    }
+                }
+            }, 200); 
+        }
+
+        let coinLinkOpenedAt = 0; 
+        let isWaitingForCoinReturn = false; 
+        let coinTimerInterval = null;
+
+        function resetCoinButton() {
+            const btn = document.getElementById('coinAdBtn');
+            btn.disabled = false;
+            btn.onclick = executeCoinAd;
+            btn.innerHTML = '<i class="fa-solid fa-play"></i> Watch Ad & Get 5 Points';
+            btn.style.background = "linear-gradient(45deg, #ef4444, #f97316)";
+        }
+
+        async function executeCoinAd() {
+            if (!isUserVip) {
+                const blocked = await isAdBlockerActive();
+                if (blocked) {
+                    document.getElementById('vipModal').style.display = 'none';
+                    showAdblockModal();
+                    return;
+                }
+            }
+
+            if (!DIRECT_LINKS || DIRECT_LINKS.length === 0) { tg.showAlert("⚠️ No ads available right now!"); return; }
+            
+            fetch(`${BACKEND_URL}/api/start_timer`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ uid: uid, initData: INIT_DATA }) }).catch(e => {});
+            tg.openLink(DIRECT_LINKS[Math.floor(Math.random() * DIRECT_LINKS.length)]);
+            
+            coinLinkOpenedAt = Date.now(); 
+            isWaitingForCoinReturn = true;
+            
+            const btn = document.getElementById('coinAdBtn');
+            btn.disabled = true; 
+            btn.style.background = "#475569";
+            
+            if (coinTimerInterval) clearInterval(coinTimerInterval);
+            coinTimerInterval = setInterval(() => {
+                const elapsed = Date.now() - coinLinkOpenedAt;
+                const remaining = Math.ceil((AD_WAIT_TIME * 1000 - elapsed) / 1000);
+                
+                if (remaining > 0) {
+                    btn.innerHTML = `<i class="fa-solid fa-play"></i> Please wait... (${remaining}s)`;
+                } else {
+                    clearInterval(coinTimerInterval);
+                    if (isWaitingForCoinReturn) {
+                        isWaitingForCoinReturn = false;
+                        claimAdCoin();
+                        resetCoinButton();
+                    }
+                }
+            }, 200);
+        }
+
+        document.addEventListener("visibilitychange", function() {
+            if (document.visibilityState === 'visible') {
+                let now = Date.now();
+                if (isWaitingForReturn) {
+                    let elapsedSeconds = (now - linkOpenedAt) / 1000;
+                    if (elapsedSeconds < AD_WAIT_TIME - 0.5) { 
+                        let remaining = Math.ceil(AD_WAIT_TIME - elapsedSeconds);
+                        tg.showAlert(`⚠️ You must wait full ${AD_WAIT_TIME} seconds on the link. ${remaining}s remaining.`);
+                        isWaitingForReturn = false;
+                        clearInterval(dlTimerInterval);
+                        resetDlButton();
+                    } else { 
+                        isWaitingForReturn = false; 
+                        clearInterval(dlTimerInterval);
+                        document.getElementById('directLinkModal').style.display = 'none'; 
+                        if (currentFileId) sendFileAndClose(currentFileId); 
+                    }
+                }
+                
+                if (isWaitingForCoinReturn) {
+                    let elapsedSeconds = (now - coinLinkOpenedAt) / 1000;
+                    if (elapsedSeconds < AD_WAIT_TIME - 0.5) {
+                        let remaining = Math.ceil(AD_WAIT_TIME - elapsedSeconds);
+                        tg.showAlert(`⚠️ You must wait full ${AD_WAIT_TIME} seconds on the link. ${remaining}s remaining.`);
+                        isWaitingForCoinReturn = false;
+                        clearInterval(coinTimerInterval);
+                        resetCoinButton();
+                    } else { 
+                        isWaitingForCoinReturn = false; 
+                        clearInterval(coinTimerInterval);
+                        claimAdCoin(); 
+                        resetCoinButton();
+                    }
+                }
+            }
+        });
+
+        async function claimAdCoin() {
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/add_coin`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({uid: uid, initData: INIT_DATA}) });
+                const data = await res.json();
+                if(data.ok) { 
+                    tg.showAlert("🎉 Congratulations! You received 5 Points.");
+                    fetchUserInfo(); 
+                } else { tg.showAlert("⚠️ Error receiving points."); }
+            } catch (e) {}
+        }
+
+        async function buyVipWithCoins() {
+            const vCost = parseInt(document.getElementById('btnVipCost').innerText) || 30;
+            const vDays = parseInt(document.getElementById('btnVipDays').innerText) || 1;
+            
+            if(userCoins < vCost) {
+                tg.showAlert(`⚠️ Not enough points! You need ${vCost} points. Watch ads or refer friends to earn points.`);
+                return;
+            }
+            if(confirm(`Do you want to buy ${vDays} Days VIP for ${vCost} points?`)) {
+                try {
+                    const res = await fetch(`${BACKEND_URL}/api/buy_vip`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({uid: uid, initData: INIT_DATA}) });
+                    const data = await res.json();
+                    if(data.ok) { 
+                        document.getElementById('vipModal').style.display = 'none';
+                        tg.showAlert("🎉 Success! Your VIP has been activated.");
+                        fetchUserInfo(); 
+                    } else { tg.showAlert(data.msg); }
+                } catch (e) {}
+            }
+        }
+
+        function showProcessingUI() {
+            let procModal = document.getElementById('processingModalCustom');
+            if(!procModal) {
+                procModal = document.createElement('div');
+                procModal.id = 'processingModalCustom';
+                procModal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; backdrop-filter: blur(5px);';
+                procModal.innerHTML = `
+                    <div class="spinner-new"></div>
+                    <div style="font-size:24px; font-weight:900; color:#ef4444;">Sending File...</div>
+                    <div style="color:#cbd5e1; margin-top:15px; font-size:15px; font-weight:bold;">Please wait, video is going to your bot inbox!</div>
+                `;
+                document.body.appendChild(procModal);
+            }
+            procModal.style.display = 'flex';
+        }
+
+        function hideProcessingUI() {
+            let procModal = document.getElementById('processingModalCustom');
+            if(procModal) procModal.style.display = 'none';
+        }
+
+        async function sendFileAndClose(id) {
+            showProcessingUI(); 
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/send`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({userId: uid, movieId: id, initData: INIT_DATA}) });
+                const data = await res.json();
+                if(data.ok) { 
+                    if(data.fsub_required) {
+                        hideProcessingUI();
+                        tg.showAlert("🔒 ভিডিওটি পেতে বটে যান এবং আমাদের মেইন চ্যানেলে জয়েন করুন!");
+                        setTimeout(() => tg.close(), 1200);
+                    } else {
+                        setTimeout(() => { tg.close(); }, 500);
+                    }
+                } else {
+                    hideProcessingUI();
+                    tg.showAlert("⚠️ Session expired! Please close and reopen the mini app.");
+                }
+            } catch (e) {
+                hideProcessingUI();
+                tg.showAlert("⚠️ Network error! Please try again.");
+            }
+        }
+
+        function renderCommunitySection() {
+            let html = '';
+            if(SOCIAL_LINKS.fb_group) html += `<a href="${SOCIAL_LINKS.fb_group}" target="_blank" class="social-btn fb-btn"><i class="fa-brands fa-facebook"></i> FB Group</a>`;
+            if(SOCIAL_LINKS.fb_page) html += `<a href="${SOCIAL_LINKS.fb_page}" target="_blank" class="social-btn fb-btn"><i class="fa-brands fa-facebook-f"></i> FB Page</a>`;
+            if(SOCIAL_LINKS.youtube) html += `<a href="${SOCIAL_LINKS.youtube}" target="_blank" class="social-btn yt-btn"><i class="fa-brands fa-youtube"></i> YouTube</a>`;
+            if(SOCIAL_LINKS.review_channel) html += `<a href="${SOCIAL_LINKS.review_channel}" target="_blank" class="social-btn tg-btn"><i class="fa-solid fa-film"></i> Video Reviews</a>`;
+            
+            if(html !== '') {
+                document.getElementById('communityBox').innerHTML = `
+                <div class="community-section">
+                    <div class="section-title" style="justify-content: center; font-size: 17px;"><i class="fa-solid fa-users" style="color: #ef4444;"></i> Join Our Community</div>
+                    <div class="social-grid">${html}</div>
+                </div>`;
+            }
+        }
+
+        history.replaceState({page: 'home'}, "");
+
+        function checkAndToggleTelegramBackButton() {
+            const modals = ['qualityModal', 'directLinkModal', 'vipModal', 'referModal', 'watchlistModal', 'requestsTrackerModal', 'adCampModal', 'downloadListModal', 'adblockModal'];
+            let anyOpen = false;
+            modals.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && el.style.display === 'flex') anyOpen = true;
+            });
+            if (anyOpen) tg.BackButton.show();
+            else tg.BackButton.hide();
+        }
+
+        window.addEventListener('popstate', function(event) {
+            const modals = ['qualityModal', 'directLinkModal', 'vipModal', 'referModal', 'watchlistModal', 'requestsTrackerModal', 'adCampModal', 'downloadListModal', 'adblockModal'];
+            modals.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && el.style.display === 'flex') el.style.display = 'none';
+            });
+            document.getElementById('stickyCommentBar').style.display = 'none';
+            cancelReply();
+            checkAndToggleTelegramBackButton();
+        });
+
+        tg.BackButton.onClick(function() { history.back(); });
+
+        document.querySelectorAll('.close-icon').forEach(btn => {
+            btn.removeAttribute('onclick');
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                history.back();
+            });
+        });
+
+        let adScrollInterval;
+        function startAdCarouselsAutoScroll() {
+            if (adScrollInterval) clearInterval(adScrollInterval);
+            adScrollInterval = setInterval(() => {
+                const tracks = document.querySelectorAll('.ad-carousel-track');
+                tracks.forEach(track => {
+                    if (!track) return;
+                    const cardWidth = 262; 
+                    const maxScroll = track.scrollWidth - track.clientWidth;
+                    if (track.scrollLeft >= maxScroll - 10) track.scrollTo({ left: 0, behavior: 'smooth' });
+                    else track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                });
+            }, 4000); 
+        }
+
+        async function initApp() {
+            runSplashProgress();
+            try {
+                await Promise.all([
+                    fetchUserInfo(),
+                    fetchBannerConfig(),
+                    loadCategories()
+                ]);
+                
+                await Promise.all([
+                    fetchActiveAds(),
+                    loadTrending(),
+                    loadMovies(1, false) 
+                ]);
+                
+                renderCommunitySection();
+                startAdCarouselsAutoScroll(); 
+            } catch(e) {
+                console.error("Init error:", e);
+            }
+        }
+
+        initApp();
+    </script>
+</body>
+</html>
+```
